@@ -4283,38 +4283,6 @@
                 !!i.webkitFullscreenElement;
               e(t).attr("style", a ? "display: none !important;" : "");
             }
-            a.ready = function () {
-              var a = o.attr("data-wf-status"),
-                n = o.attr("data-wf-domain") || "";
-              (/\.webflow\.io$/i.test(n) && l.hostname !== n && (a = !0),
-                a &&
-                  !c &&
-                  ((t =
-                    t ||
-                    (function () {
-                      var t = e('<a class="w-webflow-badge"></a>').attr(
-                          "href",
-                          "https://webflow.com?utm_campaign=brandjs",
-                        ),
-                        a = e("<img>")
-                          .attr(
-                            "src",
-                            "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon-d2.89e12c322e.svg",
-                          )
-                          .attr("alt", "")
-                          .css({ marginRight: "4px", width: "26px" }),
-                        n = e("<img>")
-                          .attr(
-                            "src",
-                            "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-text-d2.c82cec3b78.svg",
-                          )
-                          .attr("alt", "Made in Webflow");
-                      return (t.append(a, n), t[0]);
-                    })()),
-                  f(),
-                  setTimeout(f, 500),
-                  e(i).off(r, s).on(r, s)));
-            };
             function f() {
               var e = d.children(".w-webflow-badge"),
                 a = e.length && e.get(0) === t,
