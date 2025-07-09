@@ -137,6 +137,52 @@
           max-width: 70px;
         }
       }
+
+      /* Team Card Hover Effects */
+      .team-card-item {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+        padding: 15px;
+      }
+
+      .team-card-item:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-card-item:hover .team-member-name {
+        color: #009688;
+      }
+
+      .team-card-item:hover .team-thumbnail-wrapper {
+        transform: scale(1.05);
+      }
+
+      .team-thumbnail-wrapper {
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-bottom: 15px;
+      }
+
+      .team-member-thumbnail {
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .team-member-name {
+        transition: color 0.3s ease;
+      }
+
+      .team-content-wrapper {
+        padding: 0 10px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -468,33 +514,6 @@
                 <div class="team-content-wrapper">
                   <p data-w-id="7a623a0f-0e76-b053-2685-2a17ff73de5b" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-name">Sophia Martinez</p>
                   <p data-w-id="7a623a0f-0e76-b053-2685-2a17ff73de5d" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-role">Customer Experience Manager</p>
-                </div>
-              </div>
-              <div class="team-card-item">
-                <div data-w-id="b5bad25f-8538-a1af-a47b-4bd1eccc6641" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-thumbnail-wrapper">
-                  <img src="images/677f670be5c106d6580c6c3f_Team%20Image%20%284%29.jpg" loading="lazy" alt="Team Member Thumbnail" class="team-member-thumbnail">
-                </div>
-                <div class="team-content-wrapper">
-                  <p data-w-id="b5bad25f-8538-a1af-a47b-4bd1eccc6644" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-name">Jake Anderson</p>
-                  <p data-w-id="b5bad25f-8538-a1af-a47b-4bd1eccc6646" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-role">Adventure Specialist</p>
-                </div>
-              </div>
-              <div class="team-card-item">
-                <div data-w-id="418ae8d8-5127-d584-c31e-f9e034df05e8" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-thumbnail-wrapper">
-                  <img src="images/677f670b5058243ca49716ad_Team%20Image%20%285%29.jpg" loading="lazy" alt="Team Member Thumbnail" class="team-member-thumbnail">
-                </div>
-                <div class="team-content-wrapper">
-                  <p data-w-id="418ae8d8-5127-d584-c31e-f9e034df05eb" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-name">Aisha Patel</p>
-                  <p data-w-id="418ae8d8-5127-d584-c31e-f9e034df05ed" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-role">Destination Research Analyst</p>
-                </div>
-              </div>
-              <div class="team-card-item">
-                <div data-w-id="df197734-679e-4fa4-a221-3fcafb680791" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-thumbnail-wrapper">
-                  <img src="images/677f670b0ecf79b244a00e8c_Team%20Image%20%286%29.jpg" loading="lazy" alt="Team Member Thumbnail" class="team-member-thumbnail">
-                </div>
-                <div class="team-content-wrapper">
-                  <p data-w-id="df197734-679e-4fa4-a221-3fcafb680794" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-name">Marco Rinaldi</p>
-                  <p data-w-id="df197734-679e-4fa4-a221-3fcafb680796" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="team-member-role">Local Guide Coordinator</p>
                 </div>
               </div>
             </div>
