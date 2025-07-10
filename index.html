@@ -878,10 +878,22 @@
                   const prevButton = document.getElementById('prevButton');
                   const container = document.querySelector('.custom-carousel-container');
                   
-                  let slideWidth = slides[0].getBoundingClientRect().width;
+                  // Ensure proper initial sizing
+                  window.setTimeout(() => {
+                    recalculateSizes();
+                    moveToSlide(slideIndex);
+                  }, 100);
+                  
+                  let slideWidth = 0;
                   let slideIndex = 0;
                   let slidesToShow = getSlidesToShow();
                   const totalSlides = slides.length;
+                  
+                  // Function to recalculate sizes
+                  function recalculateSizes() {
+                    slideWidth = slides[0].getBoundingClientRect().width;
+                    slidesToShow = getSlidesToShow();
+                  }
                   
                   // Touch swipe variables
                   let touchStartX = 0;
@@ -907,11 +919,14 @@
                     });
                   }
                   
-                  // Resize handler
+                  // Resize handler with debounce
+                  let resizeTimer;
                   window.addEventListener('resize', () => {
-                    slideWidth = slides[0].getBoundingClientRect().width;
-                    slidesToShow = getSlidesToShow();
-                    moveToSlide(slideIndex);
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                      recalculateSizes();
+                      moveToSlide(slideIndex);
+                    }, 100);
                   });
                   
                   function moveToSlide(index) {
@@ -921,11 +936,23 @@
                     slideIndex = index;
                     updateActiveStates();
                     
-                    // Calculate offset - include gap for desktop (20px) but not for mobile
+                    // Calculate offset - ensure full visibility
                     const gap = window.innerWidth <= 767 ? 0 : 20;
-                    const moveX = -1 * (slideWidth + gap) * slideIndex;
-                    track.style.transition = 'transform 0.3s ease';
-                    track.style.transform = `translateX(${moveX}px)`;
+                    
+                    // For mobile, ensure the card is fully centered in the viewport
+                    if (window.innerWidth <= 767) {
+                      const containerWidth = container.getBoundingClientRect().width;
+                      const cardWidth = slideWidth;
+                      const offset = (containerWidth - cardWidth) / 2;
+                      const moveX = (-1 * slideWidth * slideIndex) + offset;
+                      track.style.transition = 'transform 0.3s ease';
+                      track.style.transform = `translateX(${moveX}px)`;
+                    } else {
+                      // For desktop, just use the regular slide width + gap
+                      const moveX = -1 * (slideWidth + gap) * slideIndex;
+                      track.style.transition = 'transform 0.3s ease';
+                      track.style.transform = `translateX(${moveX}px)`;
+                    }
                   }
                   
                   nextButton.addEventListener('click', () => {
@@ -979,8 +1006,15 @@
                   }
                   
                   // Initialize
+                  recalculateSizes();
                   updateActiveStates();
                   moveToSlide(0);
+                  
+                  // Add extra handling for images loading, which might affect layout
+                  window.addEventListener('load', () => {
+                    recalculateSizes();
+                    moveToSlide(slideIndex);
+                  });
                 });
               </script>
             </div>
