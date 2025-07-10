@@ -46,6 +46,24 @@
         transform: none !important;
       }
 
+      /* Always show package carousel arrows */
+      .packages-carousel-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 10;
+        width: 42px;
+        height: 42px;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+      /* optional offset to avoid overlapping cards */
+      .packages-carousel-arrow.left-arrow { left: -24px; }
+      .packages-carousel-arrow.right-arrow { right: -24px; }
+
       /* Fix dropdown menus */
       .w-dropdown-toggle,
       .w-dropdown-list {
@@ -273,6 +291,121 @@
         background: #fff;
         color: #111;
       }
+      .custom-carousel-container {
+        position: relative;
+        overflow: hidden;
+        margin-top: 40px;
+      }
+      .custom-carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 20px;
+      }
+      .custom-carousel-slide {
+        flex: 0 0 calc(33.333% - 14px);
+        min-width: 300px;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        background-color: #fff;
+        transform: translateY(0) scale(1);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                    box-shadow 0.4s ease,
+                    border-radius 0.4s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+      .custom-carousel-slide:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        border-radius: 36px;
+      }
+      .slide-image {
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease, filter 0.5s ease;
+      }
+      .custom-carousel-slide:hover .slide-image {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+      }
+      .slide-content {
+        padding: 24px;
+        position: relative;
+        z-index: 2;
+      }
+      .slide-title {
+        font-size: 22px;
+        margin: 0 0 10px;
+        font-weight: 600;
+        color: #222;
+        font-family: 'Clash Display', sans-serif;
+        transition: color 0.3s ease;
+      }
+      .custom-carousel-slide:hover .slide-title {
+        color: #009688;
+      }
+      .slide-description {
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      .slide-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .price-tag {
+        display: flex;
+        flex-direction: column;
+      }
+      .price-label {
+        font-size: 12px;
+        color: #888;
+      }
+      .price-value {
+        font-size: 20px;
+        font-weight: 600;
+        color: #009688;
+      }
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 16px;
+      }
+      .carousel-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .carousel-button:hover {
+        background: #f5f5f5;
+        border-color: #ccc;
+      }
+      .carousel-button svg {
+        width: 24px;
+        height: 24px;
+        fill: #222;
+      }
+      @media (max-width: 991px) {
+        .custom-carousel-slide {
+          flex: 0 0 calc(50% - 10px);
+        }
+      }
+      @media (max-width: 767px) {
+        .custom-carousel-slide {
+          flex: 0 0 100%;
+        }
+      }
     </style>
     <script type="text/javascript">
       ! function(o, c) {
@@ -482,310 +615,175 @@
             </div>
           </div>
         </section>
-        <section class="packages-carousel-section about-page">
+        
+        <!-- New Custom Carousel Section -->
+        <section class="custom-packages-section">
           <div class="section-gap">
             <div class="w-layout-blockcontainer container-default w-container">
-              <div class="packages-carousel-wrapper">
-                <div class="section-top-block with-button">
-                  <div class="section-top-content-block">
-                    <p data-w-id="397b7531-57aa-721a-a951-dba5ea86e772" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="subtitle">Packages</p>
-                    <h2 data-w-id="10417abb-7e25-7d89-2c82-9c96aac2a2b4" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="section-title">Our Most Popular Adventures</h2>
-                  </div>
-                  <div class="section-top-button-wrapper">
-                    <a data-w-id="12fc605c-f27f-6f73-edae-7c4460559c63" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="packages/packages.html" class="primary-button-wrapper w-inline-block">
-                      <p class="button-text">Check All Packages</p>
-                      <div class="button-arrow w-embed">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                          <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
+              <div class="section-top-block with-button">
+                <div class="section-top-content-block">
+                  <p data-w-id="custom-subtitle" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="subtitle">Packages</p>
+                  <h2 data-w-id="custom-title" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="section-title">Our Most Popular Adventures</h2>
                 </div>
-                <div class="packages-carousel-block">
-                  <div data-delay="4000" data-animation="slide" class="packages-carousel-slider w-slider" data-autoplay="false" data-easing="ease" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" data-hide-arrows="false" data-disable-swipe="false" data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182bea" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
-                    <div class="packages-carousel-slider-mask w-slider-mask">
-                      <div class="packages-carousel-slide w-slide">
-                        <div class="packages-slide-item">
-                          <div class="packages-collection-wrapper w-dyn-list">
-                            <div role="list" class="packages-collection-list w-dyn-items">
-                              <div role="listitem" class="packages-collection-item w-dyn-item">
-                                <div class="package-slide-content-wrapper">
-                                  <div class="package-card-top-block">
-                                    <a data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182bf3" href="/packages/cochin-city-tour---cochin-kerala" class="package-thumbnail-wrapper w-inline-block">
-                                      <img src="images/677a2569d4b53d00b8f1f483_image%20%2828%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 85vw, (max-width: 767px) 84vw, (max-width: 991px) 450px, (max-width: 1439px) 350px, 450px" srcset="images/677a2569d4b53d00b8f1f483_image%20%2828%29-p-500.jpg 500w, images/677a2569d4b53d00b8f1f483_image%20%2828%29.jpg 678w" class="package-thumbnail-image">
-                                    </a>
-                                    <a href="/packages/cochin-city-tour---cochin-kerala" class="package-card-title-block w-inline-block">
-                                      <h3 class="package-card-title">Cochin City Tour – Cochin, Kerala.</h3>
-                                    </a>
-                                    <p class="package-card-summary">An iconic hotel and entertainment complex with a rooftop infinity pool, luxury shopping mall.</p>
-                                  </div>
-                                  <div class="package-card-bottom-block">
-                                    <div class="package-card-button-wrapper">
-                                      <a href="/packages/cochin-city-tour---cochin-kerala" class="primary-button-wrapper w-inline-block">
-                                        <p class="button-text">Book A Trip</p>
-                                        <div class="button-arrow w-embed">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                                            <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                    <div class="package-card-price-wrapper">
-                                      <p class="package-card-price-suffix">Starting From</p>
-                                      <p class="heading-style-h4 package-card-price-text">200$</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="packages-carousel-slide w-slide">
-                        <div class="packages-slide-item">
-                          <div class="packages-collection-wrapper w-dyn-list">
-                            <div role="list" class="packages-collection-list w-dyn-items">
-                              <div role="listitem" class="packages-collection-item w-dyn-item">
-                                <div class="package-slide-content-wrapper">
-                                  <div class="package-card-top-block">
-                                    <a data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182c0c" href="/packages/athirappilly-waterfalls---thrissur-kerala" class="package-thumbnail-wrapper w-inline-block">
-                                      <img src="images/677a2673be437367770f0a45_image%20%2832%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 85vw, (max-width: 767px) 84vw, (max-width: 991px) 450px, (max-width: 1439px) 350px, 450px" srcset="images/677a2673be437367770f0a45_image%20%2832%29-p-500.jpg 500w, images/677a2673be437367770f0a45_image%20%2832%29.jpg 678w" class="package-thumbnail-image">
-                                    </a>
-                                    <a href="/packages/athirappilly-waterfalls---thrissur-kerala" class="package-card-title-block w-inline-block">
-                                      <h3 class="package-card-title">Athirappilly Waterfalls – Thrissur, Kerala.</h3>
-                                    </a>
-                                    <p class="package-card-summary">Table Mountain National Park, with a cable car ride and hiking trails to reach the summit.</p>
-                                  </div>
-                                  <div class="package-card-bottom-block">
-                                    <div class="package-card-button-wrapper">
-                                      <a href="/packages/athirappilly-waterfalls---thrissur-kerala" class="primary-button-wrapper w-inline-block">
-                                        <p class="button-text">Book A Trip</p>
-                                        <div class="button-arrow w-embed">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                                            <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                    <div class="package-card-price-wrapper">
-                                      <p class="package-card-price-suffix">Starting From</p>
-                                      <p class="heading-style-h4 package-card-price-text">200$</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="packages-carousel-slide w-slide">
-                        <div class="packages-slide-item">
-                          <div class="packages-collection-wrapper w-dyn-list">
-                            <div role="list" class="packages-collection-list w-dyn-items">
-                              <div role="listitem" class="packages-collection-item w-dyn-item">
-                                <div class="package-slide-content-wrapper">
-                                  <div class="package-card-top-block">
-                                    <a data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182c25" href="/packages/munnar-hill-station---munnar-kerala" class="package-thumbnail-wrapper w-inline-block">
-                                      <img src="images/677a235f93635d8076a28beb_image%20%2821%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 85vw, (max-width: 767px) 84vw, (max-width: 991px) 450px, (max-width: 1439px) 350px, 450px" srcset="images/677a235f93635d8076a28beb_image%20%2821%29-p-500.jpg 500w, images/677a235f93635d8076a28beb_image%20%2821%29.jpg 678w" class="package-thumbnail-image">
-                                    </a>
-                                    <a href="/packages/munnar-hill-station---munnar-kerala" class="package-card-title-block w-inline-block">
-                                      <h3 class="package-card-title">Munnar Hill Station – Munnar, Kerala</h3>
-                                    </a>
-                                    <p class="package-card-summary">Known for its stunning waterfalls, including the Seven Sisters, and lush Geirangerfjord.</p>
-                                  </div>
-                                  <div class="package-card-bottom-block">
-                                    <div class="package-card-button-wrapper">
-                                      <a href="/packages/munnar-hill-station---munnar-kerala" class="primary-button-wrapper w-inline-block">
-                                        <p class="button-text">Book A Trip</p>
-                                        <div class="button-arrow w-embed">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                                            <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                    <div class="package-card-price-wrapper">
-                                      <p class="package-card-price-suffix">Starting From</p>
-                                      <p class="heading-style-h4 package-card-price-text">1000$</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="packages-carousel-slide w-slide">
-                        <div class="packages-slide-item">
-                          <div class="packages-collection-wrapper w-dyn-list">
-                            <div role="list" class="packages-collection-list w-dyn-items">
-                              <div role="listitem" class="packages-collection-item w-dyn-item">
-                                <div class="package-slide-content-wrapper">
-                                  <div class="package-card-top-block">
-                                    <a data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182c3e" href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="package-thumbnail-wrapper w-inline-block">
-                                      <img src="images/677a21dda13f7c666b35f1ae_image%20%2817%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 85vw, (max-width: 767px) 84vw, (max-width: 991px) 450px, (max-width: 1439px) 350px, 450px" srcset="images/677a21dda13f7c666b35f1ae_image%20%2817%29-p-500.jpg 500w, images/677a21dda13f7c666b35f1ae_image%20%2817%29.jpg 678w" class="package-thumbnail-image">
-                                    </a>
-                                    <a href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="package-card-title-block w-inline-block">
-                                      <h3 class="package-card-title">Thekkady Wildlife Adventure – Thekkady, Kerala.</h3>
-                                    </a>
-                                    <p class="package-card-summary"> An iconic man-made island shaped like a palm tree, Palm Jumeirah is home to luxury hotels.</p>
-                                  </div>
-                                  <div class="package-card-bottom-block">
-                                    <div class="package-card-button-wrapper">
-                                      <a href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="primary-button-wrapper w-inline-block">
-                                        <p class="button-text">Book A Trip</p>
-                                        <div class="button-arrow w-embed">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                                            <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                    <div class="package-card-price-wrapper">
-                                      <p class="package-card-price-suffix">Starting From</p>
-                                      <p class="heading-style-h4 package-card-price-text">1000$</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="packages-carousel-slide w-slide">
-                        <div class="packages-slide-item">
-                          <div class="packages-collection-wrapper w-dyn-list">
-                            <div role="list" class="packages-collection-list w-dyn-items">
-                              <div role="listitem" class="packages-collection-item w-dyn-item">
-                                <div class="package-slide-content-wrapper">
-                                  <div class="package-card-top-block">
-                                    <a data-w-id="cc6f54e5-24f6-38a0-454c-9bef50182c57" href="/packages/vagamon-meadows-trek---vagamon-kerala" class="package-thumbnail-wrapper w-inline-block">
-                                      <img src="images/677a1f37d675eb5ae7db96ad_image%20%289%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 85vw, (max-width: 767px) 84vw, (max-width: 991px) 450px, (max-width: 1439px) 350px, 450px" srcset="images/677a1f37d675eb5ae7db96ad_image%20%289%29-p-500.jpg 500w, images/677a1f37d675eb5ae7db96ad_image%20%289%29.jpg 678w" class="package-thumbnail-image">
-                                    </a>
-                                    <a href="/packages/vagamon-meadows-trek---vagamon-kerala" class="package-card-title-block w-inline-block">
-                                      <h3 class="package-card-title">Vagamon Meadows Trek – Vagamon, Kerala.</h3>
-                                    </a>
-                                    <p class="package-card-summary">Trek through the breathtaking terraced rice fields and meet indigenous tribes.</p>
-                                  </div>
-                                  <div class="package-card-bottom-block">
-                                    <div class="package-card-button-wrapper">
-                                      <a href="/packages/vagamon-meadows-trek---vagamon-kerala" class="primary-button-wrapper w-inline-block">
-                                        <p class="button-text">Book A Trip</p>
-                                        <div class="button-arrow w-embed">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                                            <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                    <div class="package-card-price-wrapper">
-                                      <p class="package-card-price-suffix">Starting From</p>
-                                      <p class="heading-style-h4 package-card-price-text">1000$</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                <div class="section-top-button-wrapper">
+                  <a data-w-id="custom-button" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="packages/packages.html" class="primary-button-wrapper w-inline-block">
+                    <p class="button-text">Check All Packages</p>
+                    <div class="button-arrow w-embed">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
+                        <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
+                      </svg>
                     </div>
-                    <div class="packages-carousel-arrow left-arrow w-slider-arrow-left">
-                      <div class="packages-carousel-arrow-icon w-embed">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.2381 1.49976L1.5 1.5003V17.1643M28.5 28.4998L2.15003 2.15028" stroke="currentColor" stroke-width="1.5"></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="packages-carousel-arrow right-arrow w-slider-arrow-right">
-                      <div class="packages-carousel-arrow-icon w-embed">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12.7622 1.49976L28.5002 1.5003V17.1643M1.50024 28.4998L27.8502 2.15028" stroke="currentColor" stroke-width="1.5"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                          <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                        </svg>
-                      </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="destination-cards-wrapper">
-                  <div class="destination-collection-wrapper w-dyn-list">
-                    <div role="list" class="destination-collection-list w-dyn-items">
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a103d8c4e46abadf560e1_Destination%20Thumbnail%20%284%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/cochin" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Cochin</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a100caf27bc8264d11404_Destination%20Thumbnail%20%283%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/athirappilly" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Athirappilly</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a0ff69e062d1e2edd833e_Destination%20Thumbnail%20%282%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/munnar" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Munnar</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a0fc67161e1149f584c5b_Destination%20Thumbnail%20%289%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/thekkady" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Thekkady</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a0f76978263d5cc57c8ef_Destination%20Thumbnail%20%281%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/vagamon" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Vagamon</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="listitem" class="destination-collection-item w-dyn-item">
-                        <div data-w-id="6eebd0aa-c17b-bed0-c477-ca355a98ad6c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="destination-card-item">
-                          <img src="images/677a0f577013e1bbb801e412_Destination%20Thumbnail%20%288%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.3, 1.3, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Destination Thumbnail Image" class="destination-thumbnail-image">
-                          <div class="destination-card-content-block">
-                            <a style="opacity:0;width:100%;height:100%" href="/destinations/vattavada" class="destination-card-title-block w-inline-block">
-                              <h3 class="destination-card-title">Vattavada</h3>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </a>
                 </div>
               </div>
+              
+              <div class="custom-carousel-container">
+                <div class="custom-carousel-track" id="carouselTrack">
+                  <!-- Cochin -->
+                  <div class="custom-carousel-slide">
+                    <img src="images/677a2569d4b53d00b8f1f483_image%20%2828%29.jpg" class="slide-image" alt="Cochin City Tour">
+                    <div class="slide-content">
+                      <h3 class="slide-title">Cochin City Tour – Cochin, Kerala</h3>
+                      <p class="slide-description">An iconic hotel and entertainment complex with a rooftop infinity pool, luxury shopping mall.</p>
+                      <div class="slide-footer">
+                        <div class="price-tag">
+                          <span class="price-label">Starting From</span>
+                          <span class="price-value">$200</span>
+                        </div>
+                        <a href="/packages/cochin-city-tour---cochin-kerala" class="primary-button-wrapper w-inline-block">
+                          <p class="button-text">Book</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Athirappilly -->
+                  <div class="custom-carousel-slide">
+                    <img src="images/677a2673be437367770f0a45_image%20%2832%29.jpg" class="slide-image" alt="Athirappilly Waterfalls">
+                    <div class="slide-content">
+                      <h3 class="slide-title">Athirappilly Waterfalls – Thrissur, Kerala</h3>
+                      <p class="slide-description">Table Mountain National Park, with a cable car ride and hiking trails to reach the summit.</p>
+                      <div class="slide-footer">
+                        <div class="price-tag">
+                          <span class="price-label">Starting From</span>
+                          <span class="price-value">$200</span>
+                        </div>
+                        <a href="/packages/athirappilly-waterfalls---thrissur-kerala" class="primary-button-wrapper w-inline-block">
+                          <p class="button-text">Book</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Munnar -->
+                  <div class="custom-carousel-slide">
+                    <img src="images/677a235f93635d8076a28beb_image%20%2821%29.jpg" class="slide-image" alt="Munnar Hill Station">
+                    <div class="slide-content">
+                      <h3 class="slide-title">Munnar Hill Station – Munnar, Kerala</h3>
+                      <p class="slide-description">Known for its stunning waterfalls, including the Seven Sisters, and lush Geirangerfjord.</p>
+                      <div class="slide-footer">
+                        <div class="price-tag">
+                          <span class="price-label">Starting From</span>
+                          <span class="price-value">$1000</span>
+                        </div>
+                        <a href="/packages/munnar-hill-station---munnar-kerala" class="primary-button-wrapper w-inline-block">
+                          <p class="button-text">Book</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Thekkady -->
+                  <div class="custom-carousel-slide">
+                    <img src="images/677a21dda13f7c666b35f1ae_image%20%2817%29.jpg" class="slide-image" alt="Thekkady Wildlife">
+                    <div class="slide-content">
+                      <h3 class="slide-title">Thekkady Wildlife Adventure</h3>
+                      <p class="slide-description">An iconic man-made island shaped like a palm tree, Palm Jumeirah is home to luxury hotels.</p>
+                      <div class="slide-footer">
+                        <div class="price-tag">
+                          <span class="price-label">Starting From</span>
+                          <span class="price-value">$1000</span>
+                        </div>
+                        <a href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="primary-button-wrapper w-inline-block">
+                          <p class="button-text">Book</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Vagamon -->
+                  <div class="custom-carousel-slide">
+                    <img src="images/677a1f37d675eb5ae7db96ad_image%20%289%29.jpg" class="slide-image" alt="Vagamon Meadows">
+                    <div class="slide-content">
+                      <h3 class="slide-title">Vagamon Meadows Trek – Vagamon</h3>
+                      <p class="slide-description">Trek through the breathtaking terraced rice fields and meet indigenous tribes.</p>
+                      <div class="slide-footer">
+                        <div class="price-tag">
+                          <span class="price-label">Starting From</span>
+                          <span class="price-value">$1000</span>
+                        </div>
+                        <a href="/packages/vagamon-meadows-trek---vagamon-kerala" class="primary-button-wrapper w-inline-block">
+                          <p class="button-text">Book</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="carousel-nav">
+                  <button class="carousel-button" id="prevButton">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                  </button>
+                  <button class="carousel-button" id="nextButton">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                  </button>
+                </div>
+              </div>
+              
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const track = document.getElementById('carouselTrack');
+                  const slides = Array.from(track.children);
+                  const nextButton = document.getElementById('nextButton');
+                  const prevButton = document.getElementById('prevButton');
+                  
+                  let slideWidth = slides[0].getBoundingClientRect().width;
+                  let slideIndex = 0;
+                  const slidesToShow = window.innerWidth > 991 ? 3 : window.innerWidth > 767 ? 2 : 1;
+                  const totalSlides = slides.length;
+                  
+                  // Resize handler
+                  window.addEventListener('resize', () => {
+                    slideWidth = slides[0].getBoundingClientRect().width;
+                    moveToSlide(slideIndex);
+                  });
+                  
+                  function moveToSlide(index) {
+                    if (index < 0) index = 0;
+                    if (index > totalSlides - slidesToShow) index = totalSlides - slidesToShow;
+                    
+                    slideIndex = index;
+                    const moveX = -1 * (slideWidth + 20) * slideIndex;
+                    track.style.transform = `translateX(${moveX}px)`;
+                  }
+                  
+                  nextButton.addEventListener('click', () => {
+                    moveToSlide(slideIndex + 1);
+                  });
+                  
+                  prevButton.addEventListener('click', () => {
+                    moveToSlide(slideIndex - 1);
+                  });
+                  
+                  // Initialize
+                  moveToSlide(0);
+                });
+              </script>
             </div>
           </div>
         </section>
+        
         <section class="our-features-section">
           <div class="section-gap">
             <div class="w-layout-blockcontainer container-default w-container">
