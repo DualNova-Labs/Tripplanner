@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#00FF00" stroke-width="0.5">
+  <g id="house">
+    <!-- Roof -->
+    <path d="M6,14L16,4L26,14"/>
+    <!-- House body -->
+    <path d="M8,14V26H24V14"/>
+    <!-- Door -->
+    <path d="M14,20H18V26H14V20Z"/>
+    <!-- Window -->
+    <path d="M10,16H12V18H10V16Z"/>
+  </g>
+</svg>
