@@ -62,79 +62,197 @@
       .footer-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 36px 16px 16px 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
+        padding: 50px 16px 30px 16px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
       }
-      .footer-brand-social {
+      .footer-brand-column {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+      }
+      .footer-logo-wrapper {
+        display: flex;
         align-items: center;
-        gap: 14px;
+        margin-bottom: 10px;
       }
       .footer-logo-img {
         max-width: 110px;
         height: auto;
       }
+      .footer-about-text {
+        color: #555;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+      }
       .footer-social {
         display: flex;
         gap: 18px;
       }
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        transition: all 0.3s ease;
+      }
+      .footer-social-link:hover {
+        background-color: #009688;
+        transform: translateY(-3px);
+      }
       .footer-social-link svg {
-        transition: fill 0.2s;
-        width: 26px;
-        height: 26px;
+        width: 18px;
+        height: 18px;
         display: block;
       }
       .footer-social-link:hover svg path {
-        fill: #009688;
+        fill: white;
+      }
+      .footer-column {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-column h4 {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #222;
+        margin: 0 0 20px 0;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .footer-column h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: #009688;
       }
       .footer-links {
         display: flex;
-        gap: 28px;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
       }
       .footer-link {
-        color: #222;
+        color: #555;
         text-decoration: none;
         font-weight: 500;
-        font-size: 17px;
-        transition: color 0.2s;
-        padding: 2px 4px;
-        border-radius: 3px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+      }
+      .footer-link::before {
+        content: "\203a";
+        margin-right: 8px;
+        color: #009688;
+        font-size: 18px;
+        transition: transform 0.3s ease;
       }
       .footer-link:hover {
         color: #009688;
-        background: #e0f7fa;
+      }
+      .footer-link:hover::before {
+        transform: translateX(2px);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #555;
+      }
+      .footer-contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+      }
+      .footer-contact-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #009688;
+      }
+      .footer-bottom {
+        grid-column: 1 / -1;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
       }
       .footer-copyright {
-        font-size: 15px;
-        color: #888;
+        font-size: 14px;
+        color: #777;
         text-align: center;
       }
-      @media (max-width: 900px) {
+      .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+      .footer-bottom-link {
+        color: #777;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+      }
+      .footer-bottom-link:hover {
+        color: #009688;
+      }
+      @media (max-width: 991px) {
         .footer-container {
-          padding: 28px 8px 8px 8px;
-          gap: 18px;
-        }
-        .footer-links {
-          gap: 18px;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
         }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 767px) {
         .footer-container {
-          padding: 16px 4px 4px 4px;
-          gap: 12px;
+          grid-template-columns: 1fr;
+          padding: 40px 20px 20px 20px;
+          gap: 30px;
         }
-        .footer-links {
-          gap: 10px;
-          font-size: 15px;
+        .footer-bottom {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
         }
-        .footer-logo-img {
-          max-width: 70px;
+        .footer-container .footer-column:last-child {
+          display: none !important;
+        }
+        .footer-contact-column,
+        .footer-quicklinks-column,
+        .footer-destinations-column {
+          display: none !important;
+        }
+        .footer-brand-column {
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .footer-logo-wrapper {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
+        }
+        .footer-social {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
         }
       }
     </style>
@@ -664,6 +782,36 @@
                         <div class="package-slide-content-wrapper">
                           <div class="package-card-top-block">
                             <a data-w-id="5b5a32ef-c3e1-b809-d06e-7508532e3989" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="#" class="package-thumbnail-wrapper w-inline-block">
+                              <img src="images/677a25f85aa41f631e2bd2a1_image%20%2830%29.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 87vw, (max-width: 767px) 85vw, (max-width: 991px) 305px, (max-width: 1279px) 415px, (max-width: 1439px) 336.671875px, 413.34375px" srcset="images/677a25f85aa41f631e2bd2a1_image%20%2830%29-p-500.jpg 500w, images/677a25f85aa41f631e2bd2a1_image%20%2830%29.jpg 677w" class="package-thumbnail-image">
+                            </a>
+                            <a href="#" class="package-card-title-block w-inline-block">
+                              <h3 data-w-id="5b5a32ef-c3e1-b809-d06e-7508532e398b" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="package-card-title">Kanyakumari</h3>
+                            </a>
+                            <p data-w-id="5b5a32ef-c3e1-b809-d06e-7508532e398c" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="package-card-summary">Experience India's southernmost tip and witness the majestic confluence of three seas. Duration: 2 Nights / 3 Days</p>
+                          </div>
+                          <div data-w-id="5b5a32ef-c3e1-b809-d06e-7508532e398d" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="package-card-bottom-block">
+                            <div class="package-card-button-wrapper">
+                              <a href="/contact/contact.html" class="primary-button-wrapper w-inline-block">
+                                <p class="button-text">Book A Trip</p>
+                                <div class="button-arrow w-embed">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
+                                    <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
+                                  </svg>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="package-card-price-wrapper">
+                              <p class="package-card-price-suffix">Contact for pricing</p>
+                              <p class="heading-style-h4 package-card-price-text"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div role="listitem" class="all-packages-cards-item w-dyn-item">
+                        <div class="package-slide-content-wrapper">
+                          <div class="package-card-top-block">
+                            <a data-w-id="5b5a32ef-c3e1-b809-d06e-7508532e3989" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="#" class="package-thumbnail-wrapper w-inline-block">
                               <img src="images/vagamon.jpg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Package Thumbnail Image" sizes="(max-width: 479px) 87vw, (max-width: 767px) 85vw, (max-width: 991px) 305px, (max-width: 1279px) 415px, (max-width: 1439px) 336.671875px, 413.34375px" srcset="images/677a25f85aa41f631e2bd2a1_image%20%2830%29-p-500.jpg 500w, images/677a25f85aa41f631e2bd2a1_image%20%2830%29.jpg 677w" class="package-thumbnail-image">
                             </a>
                             <a href="#" class="package-card-title-block w-inline-block">
@@ -700,7 +848,14 @@
       </div>
       <footer class="custom-footer">
         <div class="footer-container">
-          <div class="footer-brand-social">
+          <!-- Brand Column -->
+          <div class="footer-brand-column">
+            <div class="footer-logo-wrapper">
+              <img src="../images/logoblack.png" alt="Tripplanner Logo" class="footer-logo-img">
+            </div>
+            <p class="footer-about-text">
+              Your trusted travel partner for creating unforgettable journeys. We specialize in personalized itineraries and exceptional travel experiences across the globe.
+            </p>
             <div class="footer-social">
               <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.73 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z" fill="#222"/></svg>
@@ -713,16 +868,64 @@
               </a>
             </div>
           </div>
-          <div class="footer-links">
-            <a href="../index.html" class="footer-link">Home</a>
-            <a href="../aboutus/aboutus.html" class="footer-link">About</a>
-            <a href="../services/services.html" class="footer-link">Services</a>
-            <a href="/contact/contact.html" class="footer-link">Contact</a>
-            <a href="packages.html" class="footer-link">Packages</a>
-            <a href="../destination/destination.html" class="footer-link">Destination</a>
+          <!-- Quick Links Column -->
+          <div class="footer-column footer-quicklinks-column">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="../index.html" class="footer-link">Home</a>
+              <a href="../aboutus/aboutus.html" class="footer-link">About Us</a>
+              <a href="../services/services.html" class="footer-link">Services</a>
+              <a href="packages.html" class="footer-link">Packages</a>
+            </div>
           </div>
-          <div class="footer-copyright">
-            &copy; 2025 MyTravelSite. All rights reserved.
+          <!-- Destinations Column -->
+          <div class="footer-column footer-destinations-column">
+            <h4>Top Destinations</h4>
+            <div class="footer-links">
+              <a href="../destination/destination.html" class="footer-link">Kerala</a>
+              <a href="../destination/destination.html" class="footer-link">Munnar</a>
+              <a href="../destination/destination.html" class="footer-link">Wayanad</a>
+              <a href="../destination/destination.html" class="footer-link">Thekkady</a>
+            </div>
+          </div>
+          <!-- Contact Column -->
+          <div class="footer-column footer-contact-column">
+            <h4>Contact Info</h4>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 13.5L7.5 9L7.5 3.75H16.5V9L12 13.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20.25 12.75L12 21L3.75 12.75H20.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>123 Travel Street, Kochi, Kerala, India 682001</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.9995 19.1864V16.4767C21.0105 16.0337 20.858 15.6021 20.5709 15.264C19.7615 14.3106 16.9855 13.7008 15.8851 13.935C15.0274 14.1176 14.4272 14.9788 13.8405 15.5644M3 19.1864V16.4767C2.98898 16.0337 3.14148 15.6021 3.42859 15.264C4.23803 14.3106 7.01402 13.7008 8.11446 13.935C8.97216 14.1176 9.57233 14.9788 10.159 15.5644M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5ZM13.5 21C13.5 21.8284 12.8284 22.5 12 22.5C11.1716 22.5 10.5 21.8284 10.5 21C10.5 20.1716 11.1716 19.5 12 19.5C12.8284 19.5 13.5 20.1716 13.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>+91 9778096463</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.75 6.75V17.25C21.75 18.4926 20.7426 19.5 19.5 19.5H4.5C3.25736 19.5 2.25 18.4926 2.25 17.25V6.75M21.75 6.75C21.75 5.50736 20.7426 4.5 19.5 4.5H4.5C3.25736 4.5 2.25 5.50736 2.25 6.75M21.75 6.75V6.99271C21.75 7.77228 21.3447 8.49572 20.6792 8.90046L13.1792 13.4005C12.4561 13.8329 11.5439 13.8329 10.8208 13.4005L3.32078 8.90046C2.65535 8.49572 2.25 7.77228 2.25 6.99271V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>info@tripplanner.com</div>
+            </div>
+          </div>
+          <!-- Bottom Footer -->
+          <div class="footer-bottom">
+            <div class="footer-copyright">
+              &copy; 2025 Tripplanner. All rights reserved.
+            </div>
+            <div class="footer-bottom-links">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
