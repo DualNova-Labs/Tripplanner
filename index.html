@@ -101,79 +101,171 @@
       .footer-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 36px 16px 16px 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
+        padding: 50px 16px 30px 16px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
       }
-      .footer-brand-social {
+      .footer-brand-column {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+      }
+      .footer-logo-wrapper {
+        display: flex;
         align-items: center;
-        gap: 14px;
+        margin-bottom: 10px;
       }
       .footer-logo-img {
         max-width: 110px;
         height: auto;
       }
+      .footer-about-text {
+        color: #555;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+      }
       .footer-social {
         display: flex;
         gap: 18px;
       }
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        transition: all 0.3s ease;
+      }
+      .footer-social-link:hover {
+        background-color: #009688;
+        transform: translateY(-3px);
+      }
       .footer-social-link svg {
-        transition: fill 0.2s;
-        width: 26px;
-        height: 26px;
+        width: 18px;
+        height: 18px;
         display: block;
       }
       .footer-social-link:hover svg path {
-        fill: #009688;
+        fill: white;
+      }
+      .footer-column {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-column h4 {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #222;
+        margin: 0 0 20px 0;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .footer-column h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: #009688;
       }
       .footer-links {
         display: flex;
-        gap: 28px;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
       }
       .footer-link {
-        color: #222;
+        color: #555;
         text-decoration: none;
         font-weight: 500;
-        font-size: 17px;
-        transition: color 0.2s;
-        padding: 2px 4px;
-        border-radius: 3px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+      }
+      .footer-link::before {
+        content: "›";
+        margin-right: 8px;
+        color: #009688;
+        font-size: 18px;
+        transition: transform 0.3s ease;
       }
       .footer-link:hover {
         color: #009688;
-        background: #e0f7fa;
+        transform: translateX(3px);
+      }
+      .footer-link:hover::before {
+        transform: translateX(2px);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #555;
+      }
+      .footer-contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+      }
+      .footer-contact-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #009688;
+      }
+      .footer-bottom {
+        grid-column: 1 / -1;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
       .footer-copyright {
-        font-size: 15px;
-        color: #888;
-        text-align: center;
+        font-size: 14px;
+        color: #777;
       }
-      @media (max-width: 900px) {
+      .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+      }
+      .footer-bottom-link {
+        color: #777;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+      }
+      .footer-bottom-link:hover {
+        color: #009688;
+      }
+      @media (max-width: 991px) {
         .footer-container {
-          padding: 28px 8px 8px 8px;
-          gap: 18px;
-        }
-        .footer-links {
-          gap: 18px;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
         }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 767px) {
         .footer-container {
-          padding: 16px 4px 4px 4px;
-          gap: 12px;
+          grid-template-columns: 1fr;
+          padding: 40px 20px 20px 20px;
+          gap: 30px;
         }
-        .footer-links {
-          gap: 10px;
-          font-size: 15px;
-        }
-        .footer-logo-img {
-          max-width: 70px;
+        .footer-bottom {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
         }
       }
       .mobile-hamburger {
@@ -1565,7 +1657,14 @@
       </div>
       <footer class="custom-footer">
         <div class="footer-container">
-          <div class="footer-brand-social">
+          <!-- Brand Column -->
+          <div class="footer-brand-column">
+            <div class="footer-logo-wrapper">
+              <img src="images/logo.png" alt="Tripplanner Logo" class="footer-logo-img">
+            </div>
+            <p class="footer-about-text">
+              Your trusted travel partner for creating unforgettable journeys. We specialize in personalized itineraries and exceptional travel experiences across the globe.
+            </p>
             <div class="footer-social">
               <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.73 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z" fill="#222"/></svg>
@@ -1578,16 +1677,68 @@
               </a>
             </div>
           </div>
-          <div class="footer-links">
-            <a href="index.html" class="footer-link">Home</a>
-            <a href="aboutus/aboutus.html" class="footer-link">About</a>
-            <a href="services/services.html" class="footer-link">Services</a>
-            <a href="contact/contact.html" class="footer-link">Contact</a>
-            <a href="packages/packages.html" class="footer-link">Packages</a>
-            <a href="destination/destination.html" class="footer-link">Destination</a>
+          
+          <!-- Quick Links Column -->
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="index.html" class="footer-link">Home</a>
+              <a href="aboutus/aboutus.html" class="footer-link">About Us</a>
+              <a href="services/services.html" class="footer-link">Services</a>
+              <a href="packages/packages.html" class="footer-link">Packages</a>
+            </div>
           </div>
-          <div class="footer-copyright">
-            &copy; 2025 MyTravelSite. All rights reserved.
+          
+          <!-- Destinations Column -->
+          <div class="footer-column">
+            <h4>Top Destinations</h4>
+            <div class="footer-links">
+              <a href="destination/destination.html" class="footer-link">Kerala</a>
+              <a href="destination/destination.html" class="footer-link">Munnar</a>
+              <a href="destination/destination.html" class="footer-link">Wayanad</a>
+              <a href="destination/destination.html" class="footer-link">Thekkady</a>
+            </div>
+          </div>
+          
+          <!-- Contact Column -->
+          <div class="footer-column">
+            <h4>Contact Info</h4>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 13.5L7.5 9L7.5 3.75H16.5V9L12 13.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20.25 12.75L12 21L3.75 12.75H20.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>123 Travel Street, Kochi, Kerala, India 682001</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.9995 19.1864V16.4767C21.0105 16.0337 20.858 15.6021 20.5709 15.264C19.7615 14.3106 16.9855 13.7008 15.8851 13.935C15.0274 14.1176 14.4272 14.9788 13.8405 15.5644M3 19.1864V16.4767C2.98898 16.0337 3.14148 15.6021 3.42859 15.264C4.23803 14.3106 7.01402 13.7008 8.11446 13.935C8.97216 14.1176 9.57233 14.9788 10.159 15.5644M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5ZM13.5 21C13.5 21.8284 12.8284 22.5 12 22.5C11.1716 22.5 10.5 21.8284 10.5 21C10.5 20.1716 11.1716 19.5 12 19.5C12.8284 19.5 13.5 20.1716 13.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>+91 9778096463</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.75 6.75V17.25C21.75 18.4926 20.7426 19.5 19.5 19.5H4.5C3.25736 19.5 2.25 18.4926 2.25 17.25V6.75M21.75 6.75C21.75 5.50736 20.7426 4.5 19.5 4.5H4.5C3.25736 4.5 2.25 5.50736 2.25 6.75M21.75 6.75V6.99271C21.75 7.77228 21.3447 8.49572 20.6792 8.90046L13.1792 13.4005C12.4561 13.8329 11.5439 13.8329 10.8208 13.4005L3.32078 8.90046C2.65535 8.49572 2.25 7.77228 2.25 6.99271V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>info@tripplanner.com</div>
+            </div>
+          </div>
+          
+          <!-- Bottom Footer -->
+          <div class="footer-bottom">
+            <div class="footer-copyright">
+              &copy; 2025 Tripplanner. All rights reserved.
+            </div>
+            <div class="footer-bottom-links">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
