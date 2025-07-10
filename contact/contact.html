@@ -540,5 +540,58 @@
         window.addEventListener('resize', handleResize);
         handleResize();
       </script>
+      <script>
+        // Contact form submission via backend (no WhatsApp window)
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('email-form');
+          const doneMsg = form.nextElementSibling;
+          const failMsg = doneMsg.nextElementSibling;
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Collect form data
+            const name = form['Your-Name'].value.trim();
+            const email = form['Your-Email'].value.trim();
+            const phone = form['Phone'].value.trim();
+            const location = form['Location'].value.trim();
+            const message = form['Your-Message'].value.trim();
+            const privacy = form['Checkbox'].checked;
+            // Validate privacy policy
+            if (!privacy) {
+              failMsg.style.display = 'block';
+              failMsg.innerHTML = '<div>Please agree to the privacy policy.</div>';
+              doneMsg.style.display = 'none';
+              return;
+            }
+            // Prepare data
+            const data = { name, email, phone, location, message };
+            // Send to backend
+            fetch('/api/send-whatsapp', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            })
+            .then(res => {
+              if (!res.ok) throw new Error('Network response was not ok');
+              return res.json();
+            })
+            .then(result => {
+              if (result.success) {
+                form.reset();
+                doneMsg.style.display = 'block';
+                doneMsg.innerHTML = '<div>Form submitted successfully.</div>';
+                failMsg.style.display = 'none';
+                setTimeout(() => { doneMsg.style.display = 'none'; }, 5000);
+              } else {
+                throw new Error(result.error || 'Submission failed');
+              }
+            })
+            .catch(err => {
+              failMsg.style.display = 'block';
+              failMsg.innerHTML = '<div>There was an error submitting the form. Please try again later.</div>';
+              doneMsg.style.display = 'none';
+            });
+          });
+        });
+      </script>
   </body>
 </html>
