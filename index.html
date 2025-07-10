@@ -4,21 +4,21 @@
 <html data-wf-domain="travlo.webflow.io" data-wf-page="677d1680860162f464502079" data-wf-site="6773bb8ef041a39ae66da8da" lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Home Two | Travlo - Webflow HTML Website Template</title>
-    <meta content="Travlo is a modern travel website template designed for travel and tourism. It offers customizable layouts to showcase tours, destinations, and events. This template ensures a strong online presence with responsive design and user-friendly features." name="description">
-    <meta content="Home Two | Travlo - Webflow HTML Website Template" property="og:title">
-    <meta content="Travlo is a modern travel website template designed for travel and tourism. It offers customizable layouts to showcase tours, destinations, and events. This template ensures a strong online presence with responsive design and user-friendly features." property="og:description">
-    <meta content="images/67839134a443aa2f3a6cc8f3_open-graph-image.jpg" property="og:image">
-    <meta content="Home Two | Travlo - Webflow HTML Website Template" property="twitter:title">
-    <meta content="Travlo is a modern travel website template designed for travel and tourism. It offers customizable layouts to showcase tours, destinations, and events. This template ensures a strong online presence with responsive design and user-friendly features." property="twitter:description">
-    <meta content="https://cdn.prod.website-files.com/6773bb8ef041a39ae66da8da/67839134a443aa2f3a6cc8f3_open-graph-image.jpg" property="twitter:image">
+    <title>Tripplanner</title>
+    <meta content="Tripplanner - Travel agency dedicated to creating unforgettable journeys through personalized travel experiences and exceptional customer service." name="description">
+    <meta content="Tripplanner" property="og:title">
+    <meta content="Tripplanner - Travel agency dedicated to creating unforgettable journeys through personalized travel experiences and exceptional customer service." property="og:description">
+    <meta content="Tripplanner" property="twitter:title">
+    <meta content="Tripplanner - Travel agency dedicated to creating unforgettable journeys through personalized travel experiences and exceptional customer service." property="twitter:description">
     <meta property="og:type" content="website">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
-    <!-- Original CSS link that might be failing -->
     <link href="css/travlo.webflow.9d605c0ed.css" rel="stylesheet" type="text/css">
-    <!-- Add inline CSS for critical styles to ensure animations work -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <!-- ARP-150 Font Alternative (Bebas Neue as it has a similar industrial/heavy look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
       /* Basic animation styles to fix issues */
       [data-w-id] {
@@ -293,14 +293,19 @@
       }
       .custom-carousel-container {
         position: relative;
-        overflow: hidden;
-        margin-top: 40px;
+        width: 100%;
+        overflow: visible;
+        padding: 20px 0;
+        margin: 20px 0;
       }
+      
       .custom-carousel-track {
         display: flex;
-        transition: transform 0.5s ease;
         gap: 20px;
+        transition: transform 0.5s ease;
+        will-change: transform;
       }
+      
       .custom-carousel-slide {
         flex: 0 0 calc(33.333% - 14px);
         min-width: 300px;
@@ -309,22 +314,47 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         background-color: #fff;
         transform: translateY(0) scale(1);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                    box-shadow 0.4s ease,
-                    border-radius 0.4s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-origin: center center;
         border: 1px solid rgba(0,0,0,0.05);
+        position: relative;
+        z-index: 1;
       }
+      
       .custom-carousel-slide:hover {
         transform: translateY(-10px) scale(1.02);
         box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         border-radius: 36px;
+        z-index: 2;
       }
-      .slide-image {
-        height: 240px;
+      
+      .slide-image-container {
+        position: relative;
         width: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease, filter 0.5s ease;
+        padding-top: 65%; /* 16:9 Aspect Ratio */
+        overflow: hidden;
+        line-height: 0;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        transition: border-radius 0.4s ease;
       }
+      
+      .custom-carousel-slide:hover .slide-image-container {
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+      }
+      
+      .slide-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease, filter 0.4s ease;
+        transform-origin: center center;
+      }
+      
       .custom-carousel-slide:hover .slide-image {
         transform: scale(1.05);
         filter: brightness(1.05);
@@ -333,6 +363,7 @@
         padding: 24px;
         position: relative;
         z-index: 2;
+        transition: border-radius 0.4s ease;
       }
       .slide-title {
         font-size: 22px;
@@ -341,6 +372,7 @@
         color: #222;
         font-family: 'Clash Display', sans-serif;
         transition: color 0.3s ease;
+        letter-spacing: -0.02em;
       }
       .custom-carousel-slide:hover .slide-title {
         color: #009688;
@@ -350,6 +382,8 @@
         color: #666;
         margin-bottom: 20px;
         line-height: 1.5;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
       }
       .slide-footer {
         display: flex;
@@ -363,11 +397,14 @@
       .price-label {
         font-size: 12px;
         color: #888;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
       }
       .price-value {
         font-size: 20px;
         font-weight: 600;
         color: #009688;
+        font-family: 'Manrope', sans-serif;
       }
       .carousel-nav {
         display: flex;
@@ -405,6 +442,37 @@
         .custom-carousel-slide {
           flex: 0 0 100%;
         }
+      }
+      .custom-carousel-slide .primary-button-wrapper {
+        padding: 10px 20px;
+        background-color: #FFD600;
+        border-radius: 24px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .custom-carousel-slide .primary-button-wrapper:hover {
+        background-color: #e6c200;
+        transform: scale(1.05);
+      }
+      .custom-carousel-slide .button-text {
+        margin: 0;
+        font-family: 'Clash Display', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+      }
+      /* Add styles to match the heading-style-h2-small accordion-title class */
+      .custom-carousel-container .slide-title {
+        font-family: 'Bebas Neue', sans-serif; /* Using Bebas Neue as ARP-150 alternative */
+        font-weight: 400; /* Bebas Neue only comes in 400 weight */
+        font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        margin: 0 0 10px;
+        color: #222;
+        transition: color 0.3s ease;
+      }
+      .custom-carousel-slide:hover .slide-title {
+        color: #009688;
       }
     </style>
     <script type="text/javascript">
@@ -620,29 +688,31 @@
         <section class="custom-packages-section">
           <div class="section-gap">
             <div class="w-layout-blockcontainer container-default w-container">
-              <div class="section-top-block with-button">
-                <div class="section-top-content-block">
+                <div class="section-top-block with-button">
+                  <div class="section-top-content-block">
                   <p data-w-id="custom-subtitle" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="subtitle">Packages</p>
                   <h2 data-w-id="custom-title" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="section-title">Our Most Popular Adventures</h2>
-                </div>
-                <div class="section-top-button-wrapper">
+                  </div>
+                  <div class="section-top-button-wrapper">
                   <a data-w-id="custom-button" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="packages/packages.html" class="primary-button-wrapper w-inline-block">
-                    <p class="button-text">Check All Packages</p>
-                    <div class="button-arrow w-embed">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
-                        <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
-                      </svg>
-                    </div>
-                  </a>
+                      <p class="button-text">Check All Packages</p>
+                      <div class="button-arrow w-embed">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12Z" fill="currentColor"></path>
+                          <path d="M18.9721 12C18.8788 11.8452 18.6832 11.5671 18.4693 11.3251C18.0436 10.8432 17.4568 10.2928 16.8443 9.76105C16.2368 9.23357 15.6263 8.74365 15.166 8.38437C14.9363 8.20515 14.54 7.90576 14.4068 7.80521C13.9622 7.47768 13.8672 6.85173 14.1947 6.40706C14.5222 5.96236 15.1482 5.86736 15.5929 6.19487L15.5966 6.19767C15.741 6.30672 16.1597 6.62291 16.3964 6.80767C16.8735 7.18002 17.5131 7.69303 18.1555 8.25084C18.793 8.80434 19.4563 9.4216 19.9681 10.0008C20.2229 10.2892 20.4614 10.5918 20.6415 10.8906C20.8051 11.162 20.9999 11.5568 20.9999 12C20.9999 12.4431 20.8051 12.838 20.6415 13.1094C20.4614 13.4082 20.2229 13.7108 19.9681 13.9992C19.4563 14.5784 18.793 15.1957 18.1555 15.7492C17.5131 16.307 16.8735 16.82 16.3964 17.1923C16.1597 17.3771 15.7413 17.6931 15.5969 17.8021L15.5929 17.8051C15.1482 18.1326 14.5222 18.0376 14.1947 17.5929C13.8672 17.1483 13.9622 16.5223 14.4068 16.1948C14.54 16.0942 14.9363 15.7948 15.166 15.6156C15.6263 15.2564 16.2368 14.7664 16.8443 14.2389C17.4568 13.7072 18.0436 13.1568 18.4693 12.6749C18.6832 12.4329 18.8788 12.1548 18.9721 12Z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-              </div>
               
               <div class="custom-carousel-container">
                 <div class="custom-carousel-track" id="carouselTrack">
                   <!-- Cochin -->
                   <div class="custom-carousel-slide">
-                    <img src="images/677a2569d4b53d00b8f1f483_image%20%2828%29.jpg" class="slide-image" alt="Cochin City Tour">
+                    <div class="slide-image-container">
+                      <img src="images/677a2569d4b53d00b8f1f483_image%20%2828%29.jpg" class="slide-image" alt="Cochin City Tour">
+                                  </div>
                     <div class="slide-content">
                       <h3 class="slide-title">Cochin City Tour – Cochin, Kerala</h3>
                       <p class="slide-description">An iconic hotel and entertainment complex with a rooftop infinity pool, luxury shopping mall.</p>
@@ -650,17 +720,19 @@
                         <div class="price-tag">
                           <span class="price-label">Starting From</span>
                           <span class="price-value">$200</span>
-                        </div>
+                                        </div>
                         <a href="/packages/cochin-city-tour---cochin-kerala" class="primary-button-wrapper w-inline-block">
                           <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
                   
                   <!-- Athirappilly -->
                   <div class="custom-carousel-slide">
-                    <img src="images/677a2673be437367770f0a45_image%20%2832%29.jpg" class="slide-image" alt="Athirappilly Waterfalls">
+                    <div class="slide-image-container">
+                      <img src="images/677a2673be437367770f0a45_image%20%2832%29.jpg" class="slide-image" alt="Athirappilly Waterfalls">
+                                </div>
                     <div class="slide-content">
                       <h3 class="slide-title">Athirappilly Waterfalls – Thrissur, Kerala</h3>
                       <p class="slide-description">Table Mountain National Park, with a cable car ride and hiking trails to reach the summit.</p>
@@ -668,17 +740,19 @@
                         <div class="price-tag">
                           <span class="price-label">Starting From</span>
                           <span class="price-value">$200</span>
-                        </div>
-                        <a href="/packages/athirappilly-waterfalls---thrissur-kerala" class="primary-button-wrapper w-inline-block">
+                              </div>
+                                      <a href="/packages/athirappilly-waterfalls---thrissur-kerala" class="primary-button-wrapper w-inline-block">
                           <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
                   
                   <!-- Munnar -->
                   <div class="custom-carousel-slide">
-                    <img src="images/677a235f93635d8076a28beb_image%20%2821%29.jpg" class="slide-image" alt="Munnar Hill Station">
+                    <div class="slide-image-container">
+                      <img src="images/677a235f93635d8076a28beb_image%20%2821%29.jpg" class="slide-image" alt="Munnar Hill Station">
+                                </div>
                     <div class="slide-content">
                       <h3 class="slide-title">Munnar Hill Station – Munnar, Kerala</h3>
                       <p class="slide-description">Known for its stunning waterfalls, including the Seven Sisters, and lush Geirangerfjord.</p>
@@ -686,17 +760,19 @@
                         <div class="price-tag">
                           <span class="price-label">Starting From</span>
                           <span class="price-value">$1000</span>
-                        </div>
-                        <a href="/packages/munnar-hill-station---munnar-kerala" class="primary-button-wrapper w-inline-block">
+                              </div>
+                                      <a href="/packages/munnar-hill-station---munnar-kerala" class="primary-button-wrapper w-inline-block">
                           <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
                   
                   <!-- Thekkady -->
                   <div class="custom-carousel-slide">
-                    <img src="images/677a21dda13f7c666b35f1ae_image%20%2817%29.jpg" class="slide-image" alt="Thekkady Wildlife">
+                    <div class="slide-image-container">
+                      <img src="images/677a21dda13f7c666b35f1ae_image%20%2817%29.jpg" class="slide-image" alt="Thekkady Wildlife">
+                                </div>
                     <div class="slide-content">
                       <h3 class="slide-title">Thekkady Wildlife Adventure</h3>
                       <p class="slide-description">An iconic man-made island shaped like a palm tree, Palm Jumeirah is home to luxury hotels.</p>
@@ -704,17 +780,19 @@
                         <div class="price-tag">
                           <span class="price-label">Starting From</span>
                           <span class="price-value">$1000</span>
-                        </div>
-                        <a href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="primary-button-wrapper w-inline-block">
+                              </div>
+                                      <a href="/packages/thekkady-wildlife-adventure---thekkady-kerala" class="primary-button-wrapper w-inline-block">
                           <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
                   
                   <!-- Vagamon -->
                   <div class="custom-carousel-slide">
-                    <img src="images/677a1f37d675eb5ae7db96ad_image%20%289%29.jpg" class="slide-image" alt="Vagamon Meadows">
+                    <div class="slide-image-container">
+                      <img src="images/677a1f37d675eb5ae7db96ad_image%20%289%29.jpg" class="slide-image" alt="Vagamon Meadows">
+                                </div>
                     <div class="slide-content">
                       <h3 class="slide-title">Vagamon Meadows Trek – Vagamon</h3>
                       <p class="slide-description">Trek through the breathtaking terraced rice fields and meet indigenous tribes.</p>
@@ -722,14 +800,14 @@
                         <div class="price-tag">
                           <span class="price-label">Starting From</span>
                           <span class="price-value">$1000</span>
-                        </div>
-                        <a href="/packages/vagamon-meadows-trek---vagamon-kerala" class="primary-button-wrapper w-inline-block">
+                              </div>
+                                      <a href="/packages/vagamon-meadows-trek---vagamon-kerala" class="primary-button-wrapper w-inline-block">
                           <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
                 
                 <div class="carousel-nav">
                   <button class="carousel-button" id="prevButton">
@@ -738,8 +816,8 @@
                   <button class="carousel-button" id="nextButton">
                     <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                   </button>
-                </div>
-              </div>
+                              </div>
+                            </div>
               
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
