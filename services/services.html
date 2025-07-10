@@ -371,7 +371,7 @@
           <a href="../packages/packages.html">Packages</a>
           <a href="../aboutus/aboutus.html">About Us</a>
           <a href="services.html">Services</a>
-          <a href="../contact/contact.html" class="mobile-sidebar-contact" style="background:transparent;color:#fff;border:2px solid #fff;transition:background 0.2s,color 0.2s;">Contact Us &rarr;</a>
+          <a href="../contact/contact.html" class="mobile-sidebar-contact"><span class="contact-text">Contact Us</span><span class="contact-arrow">&rarr;</span></a>
         </div>
       </nav>
       <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open Sidebar" style="display:none;">
@@ -473,16 +473,25 @@
           color: #FFD600;
         }
         .mobile-sidebar-contact {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           background: transparent;
           color: #fff;
           border: 2px solid #fff;
-          border-radius: 24px;
-          padding: 12px 24px;
-          margin: 24px 24px 0 24px;
+          border-radius: 9999px;
+          padding: 10px 24px;
+          margin: 16px auto;
+          width: auto;
           font-weight: 600;
-          text-align: center;
-          display: inline-block;
+          font-size: 1rem;
           transition: background 0.2s, color 0.2s;
+          text-decoration: none;
+        }
+        .contact-arrow {
+          font-size: 1.3rem;
+          line-height: 1;
         }
         .mobile-sidebar-contact:hover {
           background: #fff;
