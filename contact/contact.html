@@ -281,7 +281,7 @@
               <div class="contact-from-wrapper">
                 <div class="w-layout-blockcontainer container-default contact-form-container w-container">
                   <div data-w-id="dfb82180-30bc-b7e4-fdd1-c32ac0b12eb9" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="contact-form-block w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form" method="get" class="contact-form" data-wf-page-id="677f6f2235463425901e9541" data-wf-element-id="dfb82180-30bc-b7e4-fdd1-c32ac0b12eba" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
+                    <form action="https://formsubmit.co/abinchempilayil20@gmail.com" method="POST">
                       <h3 class="contact-form-title">Fill the form below</h3>
                       <div class="form-fields-wrapper">
                         <div class="form-fields-row">
@@ -540,58 +540,36 @@
         window.addEventListener('resize', handleResize);
         handleResize();
       </script>
-      <script>
-        // Contact form submission via backend (no WhatsApp window)
-        document.addEventListener('DOMContentLoaded', function() {
-          const form = document.getElementById('email-form');
-          const doneMsg = form.nextElementSibling;
-          const failMsg = doneMsg.nextElementSibling;
-          form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Collect form data
-            const name = form['Your-Name'].value.trim();
-            const email = form['Your-Email'].value.trim();
-            const phone = form['Phone'].value.trim();
-            const location = form['Location'].value.trim();
-            const message = form['Your-Message'].value.trim();
-            const privacy = form['Checkbox'].checked;
-            // Validate privacy policy
-            if (!privacy) {
-              failMsg.style.display = 'block';
-              failMsg.innerHTML = '<div>Please agree to the privacy policy.</div>';
-              doneMsg.style.display = 'none';
-              return;
-            }
-            // Prepare data
-            const data = { name, email, phone, location, message };
-            // Send to backend
-            fetch('/api/send-whatsapp', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data)
-            })
-            .then(res => {
-              if (!res.ok) throw new Error('Network response was not ok');
-              return res.json();
-            })
-            .then(result => {
-              if (result.success) {
-                form.reset();
-                doneMsg.style.display = 'block';
-                doneMsg.innerHTML = '<div>Form submitted successfully.</div>';
-                failMsg.style.display = 'none';
-                setTimeout(() => { doneMsg.style.display = 'none'; }, 5000);
-              } else {
-                throw new Error(result.error || 'Submission failed');
-              }
-            })
-            .catch(err => {
-              failMsg.style.display = 'block';
-              failMsg.innerHTML = '<div>There was an error submitting the form. Please try again later.</div>';
-              doneMsg.style.display = 'none';
-            });
-          });
-        });
-      </script>
   </body>
+<!-- WhatsApp Floating Button Start -->
+<a href="https://wa.me/919778096463" target="_blank" id="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="24" fill="#25D366"/>
+    <path d="M34.6 29.7c-.5-.2-2.8-1.4-3.2-1.6-.4-.2-.7-.2-1 .2-.3.4-1.1 1.6-1.4 1.9-.3.3-.5.4-1 .1-.5-.2-2-0.7-3.8-2.2-1.4-1.2-2.3-2.7-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.6.7-.9.2-.3.2-.5.3-.8.1-.3 0-.6 0-.8 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7 0 1.6 1.2 3.1 1.4 3.3.2.2 2.3 3.6 5.6 4.9 3.3 1.3 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.6.3-.8.3-1.5.2-1.6z" fill="#fff"/>
+  </svg>
+</a>
+<style>
+#whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3000;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+#whatsapp-float:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  transform: scale(1.08);
+}
+</style>
+<!-- WhatsApp Floating Button End -->
 </html>
