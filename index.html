@@ -225,22 +225,27 @@
         height: 16px;
         fill: #009688;
       }
-      .footer-bottom {
-        grid-column: 1 / -1;
-        border-top: 1px solid #eee;
-        padding-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .footer-copyright {
-        font-size: 14px;
-        color: #777;
-      }
-      .footer-bottom-links {
-        display: flex;
-        gap: 20px;
-      }
+            .footer-bottom {
+         grid-column: 1 / -1;
+         border-top: 1px solid #eee;
+         padding-top: 20px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+         gap: 12px;
+       }
+       .footer-copyright {
+         font-size: 14px;
+         color: #777;
+         text-align: center;
+       }
+       .footer-bottom-links {
+         display: flex;
+         gap: 20px;
+         justify-content: center;
+       }
       .footer-bottom-link {
         color: #777;
         text-decoration: none;
