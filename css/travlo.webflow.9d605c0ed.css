@@ -2147,11 +2147,80 @@ textarea.w-input, textarea.w-select {
   .w-layout-blockcontainer {
     max-width: 728px;
   }
+  
+  .packages-carousel-section {
+    padding: 60px 20px;
+    max-width: 100%;
+  }
+
+  .packages-carousel-slider {
+    padding-bottom: 40px;
+  }
+
+  .packages-carousel-slider-mask {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .packages-slide-item {
+    width: calc(50% - 10px);
+    padding: 0;
+  }
+
+  .packages-carousel-arrow {
+    width: 40px;
+    height: 40px;
+    top: auto;
+    bottom: -20px;
+  }
+
+  .packages-carousel-arrow.left-arrow {
+    left: calc(50% - 50px);
+  }
+
+  .packages-carousel-arrow.right-arrow {
+    right: calc(50% - 50px);
+  }
 }
 
 @media screen and (max-width: 767px) {
   .w-layout-blockcontainer {
     max-width: none;
+  }
+
+  .packages-carousel-section {
+    padding: 40px 16px;
+  }
+
+  .packages-carousel-slider {
+    padding-bottom: 50px;
+  }
+
+  .packages-slide-item {
+    width: 100%;
+    padding: 0;
+  }
+
+  .package-card-top-block {
+    padding: 16px 16px 24px;
+  }
+
+  .package-card-bottom-block {
+    padding: 20px 16px;
+  }
+
+  .packages-carousel-arrow {
+    width: 36px;
+    height: 36px;
+    bottom: -18px;
+  }
+
+  .packages-carousel-arrow.left-arrow {
+    left: calc(50% - 44px);
+  }
+
+  .packages-carousel-arrow.right-arrow {
+    right: calc(50% - 44px);
   }
 }
 
@@ -3374,6 +3443,10 @@ figure {
   background-position: 0 0;
   background-size: auto 100%;
   overflow: hidden;
+  padding: 80px 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .packages-carousel-section.about-page {
@@ -9580,6 +9653,39 @@ figure {
 @media screen and (max-width: 479px) {
   h2, .section-heading {
     font-size: 28px;
+  }
+
+  .packages-carousel-section {
+    padding: 32px 12px;
+  }
+
+  .packages-carousel-slider {
+    padding-bottom: 45px;
+  }
+
+  .package-card-top-block {
+    padding: 12px 12px 20px;
+  }
+
+  .package-card-bottom-block {
+    padding: 16px 12px;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .packages-carousel-arrow {
+    width: 32px;
+    height: 32px;
+    bottom: -16px;
+  }
+
+  .packages-carousel-arrow.left-arrow {
+    left: calc(50% - 40px);
+  }
+
+  .packages-carousel-arrow.right-arrow {
+    right: calc(50% - 40px);
   }
 
   .style-guide-icon-wrap {
