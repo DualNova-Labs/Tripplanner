@@ -450,6 +450,24 @@
         height: 24px;
         fill: #222;
       }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin: 0 15px;
+      }
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .carousel-dot.active {
+        background-color: #009688;
+        transform: scale(1.2);
+      }
       @media (max-width: 991px) {
         .custom-carousel-slide {
           flex: 0 0 calc(50% - 10px);
@@ -864,6 +882,9 @@
                   <button class="carousel-button" id="prevButton">
                     <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
                   </button>
+                  <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be added dynamically by JavaScript -->
+                  </div>
                   <button class="carousel-button" id="nextButton">
                     <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                   </button>
@@ -894,6 +915,38 @@
                     slideWidth = slides[0].getBoundingClientRect().width;
                     slidesToShow = getSlidesToShow();
                   }
+                  
+                  // Create indicator dots
+                  const dotsContainer = document.getElementById('carouselDots');
+                  function createDots() {
+                    dotsContainer.innerHTML = '';
+                    const numberOfDots = totalSlides - (slidesToShow - 1);
+                    
+                    for (let i = 0; i < numberOfDots; i++) {
+                      const dot = document.createElement('div');
+                      dot.classList.add('carousel-dot');
+                      if (i === 0) dot.classList.add('active');
+                      dot.addEventListener('click', () => {
+                        moveToSlide(i);
+                      });
+                      dotsContainer.appendChild(dot);
+                    }
+                  }
+                  
+                  // Update active dot
+                  function updateDots() {
+                    const dots = Array.from(dotsContainer.children);
+                    dots.forEach((dot, i) => {
+                      if (i === slideIndex) {
+                        dot.classList.add('active');
+                      } else {
+                        dot.classList.remove('active');
+                      }
+                    });
+                  }
+                  
+                  // Create dots
+                  createDots();
                   
                   // Touch swipe variables
                   let touchStartX = 0;
@@ -930,8 +983,9 @@
                   });
                   
                   function moveToSlide(index) {
-                    if (index < 0) index = 0;
-                    if (index > totalSlides - slidesToShow) index = totalSlides - slidesToShow;
+                    // Implement looping behavior
+                    if (index < 0) index = totalSlides - slidesToShow;
+                    if (index > totalSlides - slidesToShow) index = 0;
                     
                     slideIndex = index;
                     updateActiveStates();
@@ -986,10 +1040,10 @@
                     // If the swipe is significant enough, change slide
                     if (Math.abs(diff) > slideWidth * 0.2) {
                       if (diff > 0) {
-                        // Swipe right - go to previous slide
+                        // Swipe right - go to previous slide (with loop support)
                         moveToSlide(slideIndex - 1);
                       } else {
-                        // Swipe left - go to next slide
+                        // Swipe left - go to next slide (with loop support)
                         moveToSlide(slideIndex + 1);
                       }
                     } else {
@@ -1015,6 +1069,34 @@
                     recalculateSizes();
                     moveToSlide(slideIndex);
                   });
+                  
+                  // Add autoplay functionality
+                  let autoplayInterval = null;
+                  let autoplaySpeed = 5000; // 5 seconds between slides
+                  
+                  function startAutoplay() {
+                    if (autoplayInterval) clearInterval(autoplayInterval);
+                    autoplayInterval = setInterval(() => {
+                      moveToSlide(slideIndex + 1);
+                    }, autoplaySpeed);
+                  }
+                  
+                  function stopAutoplay() {
+                    if (autoplayInterval) {
+                      clearInterval(autoplayInterval);
+                      autoplayInterval = null;
+                    }
+                  }
+                  
+                  // Start autoplay
+                  startAutoplay();
+                  
+                  // Pause on hover/touch
+                  container.addEventListener('mouseenter', stopAutoplay);
+                  container.addEventListener('touchstart', stopAutoplay);
+                  
+                  // Resume on mouse leave
+                  container.addEventListener('mouseleave', startAutoplay);
                 });
               </script>
             </div>
