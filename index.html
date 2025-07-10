@@ -272,6 +272,28 @@
           gap: 15px;
           text-align: center;
         }
+        .footer-container .footer-column:last-child {
+          display: none !important;
+        }
+        .footer-contact-column,
+        .footer-quicklinks-column,
+        .footer-destinations-column {
+          display: none !important;
+        }
+        .footer-brand-column {
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .footer-logo-wrapper {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
+        }
+        .footer-social {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
+        }
       }
       .mobile-hamburger {
         display: none;
@@ -1651,7 +1673,7 @@
           </div>
           
           <!-- Quick Links Column -->
-          <div class="footer-column">
+          <div class="footer-column footer-quicklinks-column">
             <h4>Quick Links</h4>
             <div class="footer-links">
               <a href="index.html" class="footer-link">Home</a>
@@ -1662,7 +1684,7 @@
           </div>
           
           <!-- Destinations Column -->
-          <div class="footer-column">
+          <div class="footer-column footer-destinations-column">
             <h4>Top Destinations</h4>
             <div class="footer-links">
               <a href="destination/destination.html" class="footer-link">Kerala</a>
@@ -1673,7 +1695,7 @@
           </div>
           
           <!-- Contact Column -->
-          <div class="footer-column">
+          <div class="footer-column footer-contact-column">
             <h4>Contact Info</h4>
             <div class="footer-contact-item">
               <div class="footer-contact-icon">
