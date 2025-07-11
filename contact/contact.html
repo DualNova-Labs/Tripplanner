@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     // Ensure form is visible and success message is hidden when there's no success parameter
     form.style.display = 'block';
-    formSuccess.style.display = 'none';
+    formSuccess.classList.remove('show-success');
   }
 });
 </script>
