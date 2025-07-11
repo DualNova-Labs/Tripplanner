@@ -463,6 +463,90 @@
                     z-index: 10 !important;
                   }
                   
+                  /* Enhanced Visual Interest */
+                  .why-choose-image-block {
+                    overflow: hidden;
+                    border-radius: 16px;
+                    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+                    transition: transform 0.5s ease, box-shadow 0.5s ease;
+                  }
+                  
+                  .why-choose-image-block:hover {
+                    transform: translateY(-10px) !important;
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.18) !important;
+                  }
+                  
+                  .why-choose-image {
+                    transition: transform 0.7s ease;
+                  }
+                  
+                  .why-choose-image-block:hover .why-choose-image {
+                    transform: scale(1.05);
+                  }
+                  
+                  .why-choose-icon-box {
+                    transition: transform 0.4s ease, box-shadow 0.4s ease;
+                    position: relative;
+                    overflow: hidden;
+                  }
+                  
+                  .why-choose-icon-box:hover {
+                    transform: translateY(-5px) !important;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+                  }
+                  
+                  .why-choose-icon-box:nth-child(odd) {
+                    transform: rotate(-1deg);
+                  }
+                  
+                  .why-choose-icon-box:nth-child(even) {
+                    transform: rotate(1deg);
+                  }
+                  
+                  .team-card-item {
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    transform-origin: center bottom;
+                  }
+                  
+                  .team-card-item:nth-child(1) {
+                    transform: rotate(-2deg);
+                  }
+                  
+                  .team-card-item:nth-child(2) {
+                    transform: translateY(15px);
+                  }
+                  
+                  .team-card-item:nth-child(3) {
+                    transform: rotate(2deg);
+                  }
+                  
+                  .team-card-item:hover {
+                    transform: translateY(-10px) scale(1.03) rotate(0deg) !important;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+                    z-index: 5;
+                  }
+                  
+                  .faq-item {
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                  }
+                  
+                  .faq-item:hover {
+                    transform: translateX(5px);
+                  }
+                  
+                  .faq-image-wrapper {
+                    overflow: hidden;
+                    border-radius: 16px;
+                  }
+                  
+                  .faq-image {
+                    transition: transform 0.7s ease;
+                  }
+                  
+                  .faq-image-wrapper:hover .faq-image {
+                    transform: scale(1.05);
+                  }
+                  
                   /* Mobile Responsive Styles */
                   @media (max-width: 767px) {
                     .about-us-images-wrapper {
@@ -499,6 +583,12 @@
                     
                     .about-us-image:last-child {
                       animation: float2-mobile 6s ease-in-out infinite !important;
+                    }
+                    
+                    .team-card-item:nth-child(1),
+                    .team-card-item:nth-child(2),
+                    .team-card-item:nth-child(3) {
+                      transform: none;
                     }
                   }
                   
@@ -557,7 +647,7 @@
                   </div>
                 </div>
                 <div data-w-id="4ef6ba9c-5a16-4ab0-ad73-2ba00ad43169" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="why-choose-image-block">
-                  <img src="images/677f5829384da10cc773b1d9_Why%20Choose%20Image.jpg" loading="lazy" sizes="(max-width: 767px) 94vw, (max-width: 991px) 710px, (max-width: 1279px) 400.5px, (max-width: 1439px) 508.5px, 636px" srcset="images/677f5829384da10cc773b1d9_Why%20Choose%20Image-p-500.jpg 500w, images/677f5829384da10cc773b1d9_Why%20Choose%20Image.jpg 636w" alt="Why Choose Image" class="why-choose-image">
+                  <img src="images/whychoose.jpg" loading="lazy" sizes="(max-width: 767px) 94vw, (max-width: 991px) 710px, (max-width: 1279px) 400.5px, (max-width: 1439px) 508.5px, 636px" alt="Why Choose Image" class="why-choose-image">
                 </div>
               </div>
             </div>
