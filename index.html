@@ -432,6 +432,7 @@
         gap: 20px;
         transition: transform 0.5s ease;
         will-change: transform;
+        width: 100%;
       }
       
       .custom-carousel-slide {
@@ -587,9 +588,124 @@
         background-color: #009688;
         transform: scale(1.2);
       }
+      
+      /* IMPROVED DESKTOP STYLES */
+      @media (min-width: 1200px) {
+        .custom-carousel-container {
+          padding: 30px 60px;
+          margin: 30px 0;
+          overflow: visible;
+          position: relative;
+        }
+        
+        .custom-carousel-track {
+          gap: 30px;
+          margin: 0;
+          width: 100%;
+        }
+        
+        .custom-carousel-slide {
+          flex: 0 0 calc(33.333% - 20px);
+          min-width: 320px;
+          margin: 0;
+        }
+        
+        .carousel-nav {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          justify-content: space-between;
+          padding: 0;
+          margin-top: 0;
+          pointer-events: none;
+          width: 100%;
+        }
+        
+        .carousel-button {
+          position: absolute;
+          width: 56px;
+          height: 56px;
+          pointer-events: auto;
+          z-index: 10;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-button:first-child {
+          left: -28px;
+        }
+        
+        .carousel-button:last-child {
+          right: -28px;
+        }
+        
+        .carousel-dots {
+          position: absolute;
+          bottom: -40px;
+          left: 0;
+          right: 0;
+          justify-content: center;
+        }
+      }
+      
+      /* MEDIUM DESKTOP */
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .custom-carousel-container {
+          padding: 20px 40px;
+          overflow: visible;
+        }
+        
+        .custom-carousel-track {
+          gap: 25px;
+        }
+        
+        .carousel-nav {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          justify-content: space-between;
+          padding: 0;
+          margin-top: 0;
+          pointer-events: none;
+          width: 100%;
+        }
+        
+        .carousel-button {
+          position: absolute;
+          pointer-events: auto;
+          width: 50px;
+          height: 50px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+        
+        .carousel-button:first-child {
+          left: -25px;
+        }
+        
+        .carousel-button:last-child {
+          right: -25px;
+        }
+        
+        .carousel-dots {
+          position: absolute;
+          bottom: -40px;
+          left: 0;
+          right: 0;
+          justify-content: center;
+        }
+      }
+      
       @media (max-width: 991px) {
         .custom-carousel-slide {
           flex: 0 0 calc(50% - 10px);
+        }
+        
+        .carousel-nav {
+          position: relative;
+          margin-top: 30px;
         }
       }
       @media (max-width: 767px) {
@@ -1000,6 +1116,22 @@
                   function recalculateSizes() {
                     slideWidth = slides[0].getBoundingClientRect().width;
                     slidesToShow = getSlidesToShow();
+                    
+                    // Force a reflow to ensure proper calculations
+                    slides.forEach(slide => {
+                      if (window.innerWidth > 767) {
+                        const width = window.innerWidth > 1200 ? 'calc(33.333% - 20px)' : 
+                                      window.innerWidth > 991 ? 'calc(33.333% - 17px)' : 'calc(50% - 10px)';
+                        slide.style.flex = `0 0 ${width}`;
+                      } else {
+                        slide.style.flex = '0 0 100%';
+                      }
+                    });
+                    
+                    // Re-measure after setting flex basis
+                    setTimeout(() => {
+                      slideWidth = slides[0].getBoundingClientRect().width;
+                    }, 10);
                   }
                   
                   // Create indicator dots
@@ -1078,7 +1210,7 @@
                     updateDots();
                     
                     // Calculate offset - ensure full visibility
-                    const gap = window.innerWidth <= 767 ? 0 : 20;
+                    const gap = window.innerWidth <= 767 ? 0 : window.innerWidth >= 1200 ? 30 : 20;
                     
                     // For mobile, ensure the card is fully centered in the viewport
                     if (window.innerWidth <= 767) {
