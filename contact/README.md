@@ -1,51 +1,37 @@
-# Contact Form with Google Forms and WhatsApp Integration
+# Contact Form with WhatsForm Integration
 
-This guide explains how to set up the contact form integration with Google Forms and WhatsApp.
+This contact form uses WhatsForm to collect user information and send it directly to WhatsApp.
 
 ## How It Works
 
-1. **Direct Google Form Submission**:
-   - The form submits directly to Google Forms using the `target="hidden_iframe"` approach
-   - Form fields are mapped directly to Google Form field IDs
-   - The submission happens in a hidden iframe, so the user stays on your page
+1. The contact form is embedded as an iframe from WhatsForm (https://whatsform.com/)
+2. When a user submits the form, the data is sent directly to the business WhatsApp number
+3. There's also a floating WhatsApp button for direct contact
 
-2. **WhatsApp Integration**:
-   - After successful form submission, a WhatsApp message is prepared with the form data
-   - The message is sent to your business WhatsApp number (7306364765)
-   - This happens through a hidden iframe that opens the WhatsApp API URL
+## Benefits
 
-## Google Form Details
+- No server-side code needed
+- Form submissions go directly to WhatsApp
+- Easy to manage conversations with customers
+- Mobile-friendly interface
 
-- Form ID: `1FAIpQLSeo_Ftmc7yEY69w_TVTZcfY8RysuRY92P87xDFryUfd-uP6aQ`
-- Field IDs:
-  - Name: `entry.2005620554`
-  - Email: `entry.1045781291`
-  - Address: `entry.1065046570`
-  - Phone: `entry.1166974658`
-  - Comments: `entry.839337160`
+## WhatsApp Number
 
-## Important Files
+The WhatsApp business number configured is: +91 7306364765
 
-- **contact.html**: Contains the form and JavaScript for form submission and WhatsApp integration
+## Customization
 
-## Testing
-
-1. Fill out and submit the form
-2. You should see a success message on the page
-3. The data should be submitted to your Google Form
-4. A WhatsApp message should be prepared with the form data
+To customize the form:
+1. Create an account on WhatsForm.com
+2. Design your form with your desired fields
+3. Replace the iframe URL with your new form URL
+4. Update the WhatsApp floating button number if needed
 
 ## Troubleshooting
 
-If the form submission fails:
+If the form isn't working:
+- Check that the WhatsForm iframe is loading correctly
+- Verify the WhatsApp number is correct
+- Ensure the user has completed all required fields
 
-1. Check the browser console for errors
-2. Make sure the Google Form ID and field IDs are correct
-3. Verify that the form action URL is correct
-4. Check if Google Forms is accepting submissions from your domain
-
-## Security Considerations
-
-- This implementation is simple and works well for most cases
-- For additional security, consider adding reCAPTCHA to prevent spam
-- The WhatsApp integration uses the public WhatsApp API, which requires user interaction on mobile devices 
+For more help, visit [WhatsForm Documentation](https://whatsform.com/help) 
