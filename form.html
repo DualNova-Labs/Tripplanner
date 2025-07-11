@@ -1,0 +1,44 @@
+<!-- A static form that Netlify can detect during site build -->
+<!-- This file is not meant to be accessed directly by users -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <style>
+    .hidden { display: none; }
+  </style>
+</head>
+<body class="hidden">
+  <form name="contact" netlify netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="subject" value="New Contact Form Submission from Tripplanner" />
+    <input type="hidden" name="recipient" value="abhiramak963@gmail.com" />
+    
+    <p class="hidden">
+      <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+    </p>
+    
+    <p>
+      <label>Your Name: <input type="text" name="name" /></label>
+    </p>
+    <p>
+      <label>Your Email: <input type="email" name="email" /></label>
+    </p>
+    <p>
+      <label>Phone: <input type="tel" name="phone" /></label>
+    </p>
+    <p>
+      <label>Location: <input type="text" name="location" /></label>
+    </p>
+    <p>
+      <label>Message: <textarea name="message"></textarea></label>
+    </p>
+    <p>
+      <label><input type="checkbox" name="privacy-policy" />I agree to the privacy policy</label>
+    </p>
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+  </form>
+</body>
+</html> 
