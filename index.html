@@ -436,6 +436,8 @@
         transition: transform 0.5s ease;
         will-change: transform;
         width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
       
       .custom-carousel-slide {
@@ -611,8 +613,9 @@
         
         .custom-carousel-track {
           gap: 30px;
-          margin: 0;
-          width: 100%;
+          margin: 0 auto;
+          width: calc(100% - 60px); /* Add some padding on sides */
+          justify-content: center;
         }
         
         .custom-carousel-slide {
@@ -667,6 +670,9 @@
         
         .custom-carousel-track {
           gap: 25px;
+          margin: 0 auto;
+          width: calc(100% - 40px); /* Add some padding on sides */
+          justify-content: center;
         }
         
         .carousel-nav {
@@ -1426,8 +1432,12 @@
                       track.style.transition = 'transform 0.3s ease';
                       track.style.transform = `translateX(${moveX}px)`;
                     } else {
-                      // For desktop, just use the regular slide width + gap
-                      const moveX = -1 * (slideWidth + gap) * slideIndex;
+                      // For desktop, calculate center position for proper alignment
+                      const containerWidth = container.getBoundingClientRect().width;
+                      const visibleSlidesWidth = (slideWidth * slidesToShow) + (gap * (slidesToShow - 1));
+                      const extraSpace = Math.max(0, containerWidth - visibleSlidesWidth);
+                      const offset = extraSpace / 2;
+                      const moveX = (-1 * (slideWidth + gap) * slideIndex) + offset;
                       track.style.transition = 'transform 0.3s ease';
                       track.style.transform = `translateX(${moveX}px)`;
                     }
@@ -1492,6 +1502,13 @@
                   window.addEventListener('load', () => {
                     recalculateSizes();
                     moveToSlide(1); // Ensure second slide is active after full page load
+                  });
+                  
+                  // Handle window resize to maintain proper positioning
+                  window.addEventListener('resize', () => {
+                    setTimeout(() => {
+                      moveToSlide(slideIndex);
+                    }, 100);
                   });
                   
                   // Remove autoplay functionality - only move on button clicks
