@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. https://webflow.com -->
 <!-- Last Published: Sat Jan 25 2025 06:01:51 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="travlo.webflow.io" data-wf-page="677a6ae536d2b24f90bcc88a" data-wf-site="6773bb8ef041a39ae66da8da" lang="en">
+<html data-wf-domain="travlo.webflow.io" data-wf-page="677a55c77013e1bbb82324ac" data-wf-site="6773bb8ef041a39ae66da8da" lang="en" data-wf-collection="677a55c77013e1bbb82324a1" data-wf-item-slug="hill">
   <head>
     <meta charset="utf-8">
-    <title>Zip Lining</title>
-    <meta content="Zip Lining" property="og:title">
-    <meta content="Zip Lining" property="twitter:title">
+    <title>Sightseeing</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
     <link href="css/travlo.webflow.9d605c0ed.css" rel="stylesheet" type="text/css">
@@ -62,79 +60,198 @@
       .footer-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 36px 16px 16px 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
+        padding: 50px 16px 30px 16px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
       }
-      .footer-brand-social {
+      .footer-brand-column {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+      }
+      .footer-logo-wrapper {
+        display: flex;
         align-items: center;
-        gap: 14px;
+        margin-bottom: 10px;
       }
       .footer-logo-img {
         max-width: 110px;
         height: auto;
       }
+      .footer-about-text {
+        color: #555;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+      }
       .footer-social {
         display: flex;
         gap: 18px;
       }
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        transition: all 0.3s ease;
+      }
+      .footer-social-link:hover {
+        background-color: #009688;
+        transform: translateY(-3px);
+      }
       .footer-social-link svg {
-        transition: fill 0.2s;
-        width: 26px;
-        height: 26px;
+        width: 18px;
+        height: 18px;
         display: block;
       }
       .footer-social-link:hover svg path {
-        fill: #009688;
+        fill: white;
+      }
+      .footer-column {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-column h4 {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #222;
+        margin: 0 0 20px 0;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .footer-column h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: #009688;
       }
       .footer-links {
         display: flex;
-        gap: 28px;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
       }
       .footer-link {
-        color: #222;
+        color: #555;
         text-decoration: none;
         font-weight: 500;
-        font-size: 17px;
-        transition: color 0.2s;
-        padding: 2px 4px;
-        border-radius: 3px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+      }
+      .footer-link::before {
+        content: "›";
+        margin-right: 8px;
+        color: #009688;
+        font-size: 18px;
+        transition: transform 0.3s ease;
       }
       .footer-link:hover {
         color: #009688;
-        background: #e0f7fa;
+        transform: translateX(3px);
+      }
+      .footer-link:hover::before {
+        transform: translateX(2px);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #555;
+      }
+      .footer-contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+      }
+      .footer-contact-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #009688;
+      }
+      .footer-bottom {
+        grid-column: 1 / -1;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
       }
       .footer-copyright {
-        font-size: 15px;
-        color: #888;
+        font-size: 14px;
+        color: #777;
         text-align: center;
       }
-      @media (max-width: 900px) {
+      .footer-bottom-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+      .footer-bottom-link {
+        color: #777;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+      }
+      .footer-bottom-link:hover {
+        color: #009688;
+      }
+      @media (max-width: 991px) {
         .footer-container {
-          padding: 28px 8px 8px 8px;
-          gap: 18px;
-        }
-        .footer-links {
-          gap: 18px;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
         }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 767px) {
         .footer-container {
-          padding: 16px 4px 4px 4px;
-          gap: 12px;
+          grid-template-columns: 1fr;
+          padding: 40px 20px 20px 20px;
+          gap: 30px;
         }
-        .footer-links {
-          gap: 10px;
-          font-size: 15px;
+        .footer-bottom {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
         }
-        .footer-logo-img {
-          max-width: 70px;
+        .footer-container .footer-column:last-child {
+          display: none !important;
+        }
+        .footer-contact-column,
+        .footer-quicklinks-column,
+        .footer-destinations-column {
+          display: none !important;
+        }
+        .footer-brand-column {
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .footer-logo-wrapper {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
+        }
+        .footer-social {
+          justify-content: center !important;
+          display: flex !important;
+          width: 100%;
         }
       }
     </style>
@@ -230,33 +347,33 @@
             <div class="page-hero-background-overlay"></div>
             <img src="images/677a4acac3fd79abb2c9601d_Hero%20Shape%202.png" loading="lazy" alt="Page Hero Shape" sizes="100vw" srcset="images/677a4acac3fd79abb2c9601d_Hero%20Shape%202-p-500.png 500w, images/677a4acac3fd79abb2c9601d_Hero%20Shape%202-p-800.png 800w, images/677a4acac3fd79abb2c9601d_Hero%20Shape%202.png 1920w" class="bg-shape-bottom">
           </div>
-          <h1 data-w-id="6756df21-7de7-ebb4-d29a-284755ed24c4" class="page-hero-title">Zip Lining</h1>
+          <h1 data-w-id="6756df21-7de7-ebb4-d29a-284755ed24c4" class="page-hero-title">Sightseeing</h1>
         </section>
         <section class="activity-details-section">
           <div class="section-gap">
             <div class="w-layout-blockcontainer container-default w-container">
               <div class="activity-details-wrapper">
                 <div data-w-id="fb59a641-860c-b34c-9cbb-161ad4f0571a" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="post-main-image-wrapper activity-main-image-wrapper">
-                  <img src="images/677a6355245ba077c7b8fa6b_Lining.jpg" loading="lazy" alt="" sizes="(max-width: 767px) 94vw, (max-width: 991px) 710px, (max-width: 1279px) 930px, (max-width: 1439px) 1170px, 1420px" srcset="images/677a6355245ba077c7b8fa6b_Lining-p-500.jpg 500w, images/677a6355245ba077c7b8fa6b_Lining-p-800.jpg 800w, images/677a6355245ba077c7b8fa6b_Lining-p-1080.jpg 1080w, images/677a6355245ba077c7b8fa6b_Lining.jpg 1420w" class="post-main-image">
+                  <img src="images/677a5a0a7161e1149f790d46_Hill%20Tracks%20Main%20Image.jpg" loading="lazy" alt="" sizes="(max-width: 767px) 94vw, (max-width: 991px) 710px, (max-width: 1279px) 930px, (max-width: 1439px) 1170px, 1420px" srcset="images/677a5a0a7161e1149f790d46_Hill%20Tracks%20Main%20Image-p-500.jpg 500w, images/677a5a0a7161e1149f790d46_Hill%20Tracks%20Main%20Image-p-800.jpg 800w, images/677a5a0a7161e1149f790d46_Hill%20Tracks%20Main%20Image-p-1080.jpg 1080w, images/677a5a0a7161e1149f790d46_Hill%20Tracks%20Main%20Image.jpg 1420w" class="post-main-image">
                 </div>
                 <div class="activity-details-content-wrapper">
                   <div data-w-id="503af8e6-fb1a-5599-4ad7-5316f16783e2" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="activity-details-content-one w-richtext">
                     <h3>Description</h3>
-                    <p>Dive into a world of vibrant marine life and mesmerizing underwater landscapes with our exclusive scuba diving experiences. Whether you're a seasoned diver or a first-time adventurer, this activity offers you a chance to explore stunning coral reefs, encounter exotic sea creatures, and enjoy the serene beauty of the ocean depths. Guided by certified dive instructors, you’ll learn essential diving skills or hone your technique, making every moment underwater safe and unforgettable.</p>
-                    <p>Whether you're a seasoned skier or a first-time snow explorer, a ski trip offers the perfect blend of excitement and tranquility. From mastering the slopes to savoring cozy moments in mountain lodges, every moment is filled with unforgettable experiences. Embrace the crisp mountain air, breathtaking views, and the thrill of gliding through powdery snow.</p>
+                    <p>Experience the best of Kerala and beyond with our curated sightseeing tours. Whether you’re a first-time visitor or a seasoned traveler, our sightseeing service takes you to iconic landmarks, breathtaking natural wonders, and vibrant local hotspots. Enjoy a comfortable, guided journey as you soak in the sights, sounds, and flavors of each destination.</p>
+                    <p>Our knowledgeable team ensures you don’t miss a thing—from must-see attractions to hidden gems off the beaten path. Relax, take photos, and create unforgettable memories as we handle all the details for a seamless sightseeing adventure.</p>
                   </div>
                   <div class="activity-gallery-wrapper">
                     <div class="activity-gallery-collection-wrapper w-dyn-list">
-                      <script type="text/x-wf-template" id="wf-template-65540615-8a17-1f98-7e49-530c1ef01160">%3Cdiv%20role%3D%22listitem%22%20class%3D%22activity-gallery-collection-item%20w-dyn-item%20w-dyn-repeater-item%22%3E%3Cdiv%20data-w-id%3D%22cadf7aff-b59c-6f1c-7a83-0538da44416b%22%20style%3D%22-webkit-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-moz-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-ms-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Btransform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Bopacity%3A0%22%20class%3D%22activity-gallery-image-wrapper%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a635b6f12ef31a57c3802_Lining%2520Gallery%2520(2).jpg%22%20loading%3D%22lazy%22%20alt%3D%22%22%20sizes%3D%22(max-width%3A%20479px)%2094vw%2C%20(max-width%3A%20767px)%2045vw%2C%20(max-width%3A%20991px)%20340px%2C%20(max-width%3A%201279px)%20395px%2C%20(max-width%3A%201439px)%20465px%2C%20590px%22%20srcset%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a635b6f12ef31a57c3802_Lining%2520Gallery%2520(2)-p-500.jpg%20500w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a635b6f12ef31a57c3802_Lining%2520Gallery%2520(2).jpg%20590w%22%20class%3D%22activity-gallery-image%20animated-image%22%2F%3E%3C%2Fdiv%3E%3C%2Fdiv%3E</script>
+                      <script type="text/x-wf-template" id="wf-template-65540615-8a17-1f98-7e49-530c1ef01160">%3Cdiv%20role%3D%22listitem%22%20class%3D%22activity-gallery-collection-item%20w-dyn-item%20w-dyn-repeater-item%22%3E%3Cdiv%20data-w-id%3D%22cadf7aff-b59c-6f1c-7a83-0538da44416b%22%20style%3D%22-webkit-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-moz-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-ms-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Btransform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(0.7%2C%200.7%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Bopacity%3A0%22%20class%3D%22activity-gallery-image-wrapper%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a5a114047478729256606_Hill%2520Tracks%2520(2).jpg%22%20loading%3D%22lazy%22%20alt%3D%22%22%20sizes%3D%22(max-width%3A%20479px)%2094vw%2C%20(max-width%3A%20767px)%2045vw%2C%20(max-width%3A%20991px)%20340px%2C%20(max-width%3A%201279px)%20395px%2C%20(max-width%3A%201439px)%20465px%2C%20590px%22%20srcset%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a5a114047478729256606_Hill%2520Tracks%2520(2)-p-500.jpg%20500w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F677a03a8e7a8f7ec317b29b0%2F677a5a114047478729256606_Hill%2520Tracks%2520(2).jpg%20590w%22%20class%3D%22activity-gallery-image%20animated-image%22%2F%3E%3C%2Fdiv%3E%3C%2Fdiv%3E</script>
                       <div role="list" class="activity-gallery-collection-list w-dyn-items">
                         <div role="listitem" class="activity-gallery-collection-item w-dyn-item w-dyn-repeater-item">
                           <div data-w-id="cadf7aff-b59c-6f1c-7a83-0538da44416b" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="activity-gallery-image-wrapper">
-                            <img src="images/677a635b6f12ef31a57c3802_Lining%20Gallery%20%282%29.jpg" loading="lazy" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 340px, (max-width: 1279px) 395px, (max-width: 1439px) 465px, 590px" srcset="images/677a635b6f12ef31a57c3802_Lining%20Gallery%20%282%29-p-500.jpg 500w, images/677a635b6f12ef31a57c3802_Lining%20Gallery%20%282%29.jpg 590w" class="activity-gallery-image animated-image">
+                            <img src="images/677a5a114047478729256606_Hill%20Tracks%20%282%29.jpg" loading="lazy" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 340px, (max-width: 1279px) 395px, (max-width: 1439px) 465px, 590px" srcset="images/677a5a114047478729256606_Hill%20Tracks%20%282%29-p-500.jpg 500w, images/677a5a114047478729256606_Hill%20Tracks%20%282%29.jpg 590w" class="activity-gallery-image animated-image">
                           </div>
                         </div>
                         <div role="listitem" class="activity-gallery-collection-item w-dyn-item w-dyn-repeater-item">
                           <div data-w-id="cadf7aff-b59c-6f1c-7a83-0538da44416b" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.7, 0.7, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="activity-gallery-image-wrapper">
-                            <img src="images/677a635b7d31ad29a73f43b8_Lining%20Gallery%20%281%29.jpg" loading="lazy" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 340px, (max-width: 1279px) 395px, (max-width: 1439px) 465px, 590px" srcset="images/677a635b7d31ad29a73f43b8_Lining%20Gallery%20%281%29-p-500.jpg 500w, images/677a635b7d31ad29a73f43b8_Lining%20Gallery%20%281%29.jpg 590w" class="activity-gallery-image animated-image">
+                            <img src="images/677a5a11e2ec11c30eea2de2_Hill%20Tracks%20%281%29.jpg" loading="lazy" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 340px, (max-width: 1279px) 395px, (max-width: 1439px) 465px, 590px" srcset="images/677a5a11e2ec11c30eea2de2_Hill%20Tracks%20%281%29-p-500.jpg 500w, images/677a5a11e2ec11c30eea2de2_Hill%20Tracks%20%281%29.jpg 590w" class="activity-gallery-image animated-image">
                           </div>
                         </div>
                       </div>
@@ -267,28 +384,17 @@
                   </div>
                   <div data-w-id="be22882d-6063-f141-d29d-e8a1ae01bc16" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="activity-details-content-two w-richtext">
                     <h3>Highlights</h3>
-                    <p>Escape to a winter wonderland with a ski trip designed for fun and serenity. Glide through snow-covered slopes by day and unwind by the fireplace in charming mountain resorts by night. Whether you're seeking family fun, a romantic getaway, or solo exploration, a ski trip offers a refreshing retreat from the ordinary.</p>
                     <ul role="list">
-                      <li>
-                        <strong>Crystal Clear Waters:</strong> Discover dive sites with exceptional visibility, where you can fully appreciate the colors and beauty of coral formations and fish.
-                      </li>
-                      <li>
-                        <strong>Exotic Marine Life Encounters:</strong> Swim alongside sea turtles, colorful fish, and, if lucky, gentle rays or even dolphins.
-                      </li>
-                      <li>
-                        <strong>Certified Dive Guides:</strong> All dives are led by certified instructors who prioritize your safety and enjoyment, offering insights into the underwater world.
-                      </li>
-                      <li>
-                        <strong>Beginner-Friendly & Advanced Options:</strong> Choose from introductory dives for beginners or advanced sites for experienced divers, ensuring an ideal experience for all.
-                      </li>
-                      <li>
-                        <strong>Underwater Photography:</strong> Capture your adventure with underwater photography options, so you can relive the magic and share it with friends.
-                      </li>
+                      <li><strong>Comprehensive Itineraries:</strong> Visit top attractions, scenic viewpoints, and cultural sites.</li>
+                      <li><strong>Comfortable Travel:</strong> Air-conditioned vehicles and friendly guides for a relaxed experience.</li>
+                      <li><strong>Local Insights:</strong> Learn about history, culture, and hidden gems from our expert team.</li>
+                      <li><strong>Flexible Options:</strong> Half-day, full-day, and custom sightseeing packages available.</li>
+                      <li><strong>Photo Opportunities:</strong> Plenty of stops for capturing beautiful memories along the way.</li>
                     </ul>
                     <h3>What to Bring</h3>
-                    <p>We recommend bringing swimwear, a towel, sunscreen, and a sense of adventure! All necessary diving equipment is provided.</p>
+                    <p>We recommend bringing sunglasses, a hat or cap, sunscreen, comfortable clothing, a water bottle, and your camera or smartphone. Don’t forget your sense of wonder and adventure!</p>
                   </div>
-                  <a data-w-id="00424ede-6a8a-0aba-9a35-c3a0797e060f" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="/packages" class="primary-button-wrapper w-inline-block">
+                  <a data-w-id="00424ede-6a8a-0aba-9a35-c3a0797e060f" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" href="../../packages/packages.html" class="primary-button-wrapper w-inline-block">
                     <p class="button-text">Booking Now</p>
                     <div class="button-arrow w-embed">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -305,7 +411,14 @@
       </div>
       <footer class="custom-footer">
         <div class="footer-container">
-          <div class="footer-brand-social">
+          <!-- Brand Column -->
+          <div class="footer-brand-column">
+            <div class="footer-logo-wrapper">
+              <img src="../../images/logoblack.png" alt="Tripplanner Logo" class="footer-logo-img">
+            </div>
+            <p class="footer-about-text">
+              Your trusted travel partner for creating unforgettable journeys. We specialize in personalized itineraries and exceptional travel experiences across the globe.
+            </p>
             <div class="footer-social">
               <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.73 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z" fill="#222"/></svg>
@@ -318,22 +431,74 @@
               </a>
             </div>
           </div>
-          <div class="footer-links">
-            <a href="../../index.html" class="footer-link">Home</a>
-            <a href="../../aboutus/aboutus.html" class="footer-link">About</a>
-            <a href="../services.html" class="footer-link">Services</a>
-            <a href="../../contact/contact.html" class="footer-link">Contact</a>
-            <a href="../../packages/packages.html" class="footer-link">Packages</a>
-            <a href="../../destination/destination.html" class="footer-link">Destination</a>
+          
+          <!-- Quick Links Column -->
+          <div class="footer-column footer-quicklinks-column">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="../../index.html" class="footer-link">Home</a>
+              <a href="../../aboutus/aboutus.html" class="footer-link">About Us</a>
+              <a href="../services.html" class="footer-link">Services</a>
+              <a href="../../packages/packages.html" class="footer-link">Packages</a>
+            </div>
           </div>
-          <div class="footer-copyright">
-            &copy; 2025 MyTravelSite. All rights reserved.
+          
+          <!-- Destinations Column -->
+          <div class="footer-column footer-destinations-column">
+            <h4>Top Destinations</h4>
+            <div class="footer-links">
+              <a href="../../destination/destination.html" class="footer-link">Kerala</a>
+              <a href="../../destination/destination.html" class="footer-link">Munnar</a>
+              <a href="../../destination/destination.html" class="footer-link">Wayanad</a>
+              <a href="../../destination/destination.html" class="footer-link">Thekkady</a>
+            </div>
+          </div>
+          
+          <!-- Contact Column -->
+          <div class="footer-column footer-contact-column">
+            <h4>Contact Info</h4>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 13.5L7.5 9L7.5 3.75H16.5V9L12 13.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20.25 12.75L12 21L3.75 12.75H20.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>Door No. 222 (VIII/8), Madathiparambil Building, Pattimattom P.O., Valamboor, Ernakulam, Kerala – 683562</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.9995 19.1864V16.4767C21.0105 16.0337 20.858 15.6021 20.5709 15.264C19.7615 14.3106 16.9855 13.7008 15.8851 13.935C15.0274 14.1176 14.4272 14.9788 13.8405 15.5644M3 19.1864V16.4767C2.98898 16.0337 3.14148 15.6021 3.42859 15.264C4.23803 14.3106 7.01402 13.7008 8.11446 13.935C8.97216 14.1176 9.57233 14.9788 10.159 15.5644M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5ZM13.5 21C13.5 21.8284 12.8284 22.5 12 22.5C11.1716 22.5 10.5 21.8284 10.5 21C10.5 20.1716 11.1716 19.5 12 19.5C12.8284 19.5 13.5 20.1716 13.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>+91 81293 59727<br>+91 79029 96463</div>
+            </div>
+            <div class="footer-contact-item">
+              <div class="footer-contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.75 6.75V17.25C21.75 18.4926 20.7426 19.5 19.5 19.5H4.5C3.25736 19.5 2.25 18.4926 2.25 17.25V6.75M21.75 6.75C21.75 5.50736 20.7426 4.5 19.5 4.5H4.5C3.25736 4.5 2.25 5.50736 2.25 6.75M21.75 6.75V6.99271C21.75 7.77228 21.3447 8.49572 20.6792 8.90046L13.1792 13.4005C12.4561 13.8329 11.5439 13.8329 10.8208 13.4005L3.32078 8.90046C2.65535 8.49572 2.25 7.77228 2.25 6.99271V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>tripplannersrs@gmail.com</div>
+            </div>
+          </div>
+          
+          <!-- Bottom Footer -->
+          <div class="footer-bottom">
+            <div class="footer-copyright">
+              &copy; 2025 Tripplanner. All rights reserved.
+            </div>
+            <div class="footer-bottom-links">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
     </div>
-    <script src="../../js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>
-    <script src="../../js/webflow.167d61e8.29600a37b161776a.js" type="text/javascript"></script>
+    <script src="js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>
+    <script src="js/webflow.167d61e8.29600a37b161776a.js" type="text/javascript"></script>
     <script>
 (function() {
   var lastScroll = window.scrollY;
