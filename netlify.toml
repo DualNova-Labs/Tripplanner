@@ -1,9 +1,11 @@
 [build]
   publish = "."
 
+# Form handling
 [forms]
   [forms.contact]
     name = "Contact Form"
+    success_url = "/contact/contact.html?success=true"
     
 [forms.contact.fields]
   name = { required = true }
@@ -13,6 +15,7 @@
   message = { required = false }
   privacy-policy = { required = true }
 
+# Email notifications
 [forms.contact.notifications]
   [forms.contact.notifications.email]
     to = "abhiramak963@gmail.com"

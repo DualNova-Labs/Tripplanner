@@ -398,10 +398,8 @@
               <div class="contact-from-wrapper">
                 <div class="w-layout-blockcontainer container-default contact-form-container w-container">
                   <div data-w-id="dfb82180-30bc-b7e4-fdd1-c32ac0b12eb9" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="contact-form-block w-form">
-                    <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <form id="contactForm" class="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify>
                       <input type="hidden" name="form-name" value="contact" />
-                      <input type="hidden" name="subject" value="New Contact Form Submission from Tripplanner" />
-                      <input type="hidden" name="recipient" value="abhiramak963@gmail.com" />
                       <p class="hidden" style="display: none;">
                         <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                       </p>
@@ -543,45 +541,18 @@
 </script>
 
 <script>
-// Netlify form handling with fetch API
+// Simple form handling that lets Netlify handle the submission
 document.addEventListener('DOMContentLoaded', function() {
   var form = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
   var formError = document.getElementById('formError');
   
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Create a FormData object from the form
-      const formData = new FormData(form);
-      
-      // Submit the form data to Netlify
-      fetch('/', {
-        method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(response => {
-        if (response.ok) {
-          // Show success message
-          form.style.display = 'none';
-          formSuccess.style.display = 'block';
-          
-          // Reset form fields
-          form.reset();
-          
-          // Scroll to success message
-          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          throw new Error('Form submission failed');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        formError.style.display = 'block';
-      });
-    });
+  // Check for success parameter in URL (Netlify redirects back with ?success=true)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    if (form) form.style.display = 'none';
+    if (formSuccess) formSuccess.style.display = 'block';
+    if (formSuccess) formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 });
 </script>
