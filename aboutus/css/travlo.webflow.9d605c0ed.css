@@ -4493,7 +4493,7 @@ figure {
 }
 
 .about-lightbox-thumbnail-wrapper {
-  background-image: linear-gradient(-90deg, #090909, #fff0 50%), url("../images/677e4135fc4587d3267affd3_About%20Us%20Video%20Thumbnail.jpg");
+  background-image: linear-gradient(-90deg, #090909, #fff0 50%), url("../images/Whisk_08f4f25414.jpg");
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -4505,17 +4505,6 @@ figure {
   display: flex;
   position: relative;
 }
-
-.about-lightbox-thumbnail-wrapper.about-page {
-  background-image: linear-gradient(-90deg, #0009, #0009), url("../images/677e4135fc4587d3267affd3_About%20Us%20Video%20Thumbnail.jpg");
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
-  background-attachment: scroll, scroll;
-  justify-content: center;
-  align-items: center;
-}
-
 .about-us-video-wrapper {
   justify-content: center;
   align-items: center;
