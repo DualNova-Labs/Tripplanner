@@ -804,26 +804,30 @@
         background-color: #f9f9f9;
         position: relative;
         overflow: hidden;
+        padding: 0;
+        margin: 0;
+        width: 100%;
       }
       
       .video-showcase-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        gap: 30px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
       }
       
       .video-container {
         width: 100%;
-        max-width: 1000px;
         position: relative;
-        border-radius: 16px;
         overflow: hidden;
         box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         cursor: pointer;
-        margin: 20px 0;
+        margin: 0;
+        padding: 0;
         aspect-ratio: 16 / 9;
+        max-height: 80vh;
       }
       
       .showcase-video {
@@ -839,11 +843,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.3);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s ease, background 0.3s ease;
+        z-index: 2;
       }
       
       .play-button {
@@ -851,8 +856,13 @@
         transition: transform 0.3s ease;
       }
       
+      .play-button svg {
+        width: 100px;
+        height: 100px;
+      }
+      
       .video-container:hover .video-overlay {
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.4);
       }
       
       .video-container:hover .play-button {
@@ -1051,23 +1061,18 @@
         </section>
         <!-- Video Showcase Section -->
         <section class="video-showcase-section">
-          <div class="section-gap">
-            <div class="w-layout-blockcontainer container-default w-container">
-              <div class="video-showcase-wrapper">
-                <div class="section-top-block"></div>
-                <div data-w-id="video-container" style="-webkit-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="video-container">
-                  <video class="showcase-video" controls poster="images/munnarrr.jpg">
-                    <source src="videos/MUNNAR-KERALA -4K ARIEL VIEW.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                  <div class="video-overlay">
-                    <div class="play-button">
-                      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="12" fill="white" fill-opacity="0.8"/>
-                        <path d="M16 12L10 16.5V7.5L16 12Z" fill="#009688"/>
-                      </svg>
-                    </div>
-                  </div>
+          <div class="video-showcase-wrapper">
+            <div data-w-id="video-container" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="video-container">
+              <video class="showcase-video" controls poster="images/munnarrr.jpg">
+                <source src="videos/MUNNAR-KERALA -4K ARIEL VIEW.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay">
+                <div class="play-button">
+                  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="white" fill-opacity="0.9"/>
+                    <path d="M16 12L10 16.5V7.5L16 12Z" fill="#009688"/>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -2195,19 +2200,27 @@
           const video = document.querySelector('.showcase-video');
           
           if (videoContainer && videoOverlay && video) {
+            // Hide controls initially
+            video.controls = false;
+            
             videoContainer.addEventListener('click', function() {
-              videoOverlay.style.display = 'none';
+              videoOverlay.style.opacity = '0';
+              videoOverlay.style.pointerEvents = 'none';
               video.play();
               video.controls = true;
             });
             
             // Reset overlay when video ends or is paused
             video.addEventListener('pause', function() {
-              videoOverlay.style.display = 'flex';
+              if (!video.seeking) {
+                videoOverlay.style.opacity = '1';
+                videoOverlay.style.pointerEvents = 'auto';
+              }
             });
             
             video.addEventListener('ended', function() {
-              videoOverlay.style.display = 'flex';
+              videoOverlay.style.opacity = '1';
+              videoOverlay.style.pointerEvents = 'auto';
               video.currentTime = 0;
             });
           }
