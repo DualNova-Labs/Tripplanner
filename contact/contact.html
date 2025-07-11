@@ -669,6 +669,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
       window.history.pushState({path: newurl}, '', newurl);
     }
+  } else {
+    // Ensure form is visible and success message is hidden when there's no success parameter
+    form.style.display = 'block';
+    formSuccess.style.display = 'none';
   }
 });
 </script>
