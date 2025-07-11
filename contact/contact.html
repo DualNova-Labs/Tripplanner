@@ -433,12 +433,12 @@
                       </div>
                       <button type="submit" class="form-submit-button w-button">Submit</button>
                     </form>
-                    <div id="formSuccess" class="w-form-done" style="display:none;">
+                    <div id="formSuccess" class="w-form-done">
                       <div class="success-icon"></div>
                       <div class="success-message">Thank you! Your submission has been received!</div>
                       <div class="success-details">We'll get back to you shortly.</div>
                     </div>
-                    <div id="formError" class="w-form-fail" style="display:none;">
+                    <div id="formError" class="w-form-fail">
                       <div>Oops! Something went wrong while submitting the form.</div>
                     </div>
                     
@@ -529,6 +529,22 @@
                         100% {
                           transform: scale(1);
                         }
+                      }
+                      
+                      /* Error message styling */
+                      .w-form-fail {
+                        display: none;
+                        background-color: #ffeeee;
+                        border-radius: 12px;
+                        padding: 20px;
+                        margin: 20px 0;
+                        text-align: center;
+                        border: 1px solid rgba(255, 0, 0, 0.2);
+                      }
+                      
+                      .w-form-fail.show-error {
+                        display: block;
+                        animation: fadeInUp 0.5s ease forwards;
                       }
                     </style>
                   </div>
