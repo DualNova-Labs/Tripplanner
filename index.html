@@ -432,6 +432,7 @@
         gap: 20px;
         transition: transform 0.5s ease;
         will-change: transform;
+        width: 100%;
       }
       
       .custom-carousel-slide {
@@ -587,9 +588,124 @@
         background-color: #009688;
         transform: scale(1.2);
       }
+      
+      /* IMPROVED DESKTOP STYLES */
+      @media (min-width: 1200px) {
+        .custom-carousel-container {
+          padding: 30px 60px;
+          margin: 30px 0;
+          overflow: visible;
+          position: relative;
+        }
+        
+        .custom-carousel-track {
+          gap: 30px;
+          margin: 0;
+          width: 100%;
+        }
+        
+        .custom-carousel-slide {
+          flex: 0 0 calc(33.333% - 20px);
+          min-width: 320px;
+          margin: 0;
+        }
+        
+        .carousel-nav {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          justify-content: space-between;
+          padding: 0;
+          margin-top: 0;
+          pointer-events: none;
+          width: 100%;
+        }
+        
+        .carousel-button {
+          position: absolute;
+          width: 56px;
+          height: 56px;
+          pointer-events: auto;
+          z-index: 10;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-button:first-child {
+          left: -28px;
+        }
+        
+        .carousel-button:last-child {
+          right: -28px;
+        }
+        
+        .carousel-dots {
+          position: absolute;
+          bottom: -40px;
+          left: 0;
+          right: 0;
+          justify-content: center;
+        }
+      }
+      
+      /* MEDIUM DESKTOP */
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .custom-carousel-container {
+          padding: 20px 40px;
+          overflow: visible;
+        }
+        
+        .custom-carousel-track {
+          gap: 25px;
+        }
+        
+        .carousel-nav {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          justify-content: space-between;
+          padding: 0;
+          margin-top: 0;
+          pointer-events: none;
+          width: 100%;
+        }
+        
+        .carousel-button {
+          position: absolute;
+          pointer-events: auto;
+          width: 50px;
+          height: 50px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+        
+        .carousel-button:first-child {
+          left: -25px;
+        }
+        
+        .carousel-button:last-child {
+          right: -25px;
+        }
+        
+        .carousel-dots {
+          position: absolute;
+          bottom: -40px;
+          left: 0;
+          right: 0;
+          justify-content: center;
+        }
+      }
+      
       @media (max-width: 991px) {
         .custom-carousel-slide {
           flex: 0 0 calc(50% - 10px);
+        }
+        
+        .carousel-nav {
+          position: relative;
+          margin-top: 30px;
         }
       }
       @media (max-width: 767px) {
@@ -681,6 +797,151 @@
       }
       .custom-carousel-slide:hover .slide-title {
         color: #009688;
+      }
+      
+      /* Video Showcase Section Styles */
+      .video-showcase-section {
+        background-color: #f9f9f9;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      .video-showcase-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .video-container {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 16 / 9;
+        max-height: 80vh;
+      }
+      
+      .showcase-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease, background 0.3s ease;
+        z-index: 2;
+      }
+      
+      .play-button {
+        transform: scale(1);
+        transition: transform 0.3s ease;
+      }
+      
+      .play-button svg {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .video-container:hover .video-overlay {
+        background: rgba(0,0,0,0.4);
+      }
+      
+      .video-container:hover .play-button {
+        transform: scale(1.1);
+      }
+      
+      .video-description {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #555;
+        font-family: 'Manrope', sans-serif;
+      }
+      
+      @media (max-width: 991px) {
+        .video-container {
+          max-width: 90%;
+        }
+        
+        .video-description {
+          max-width: 90%;
+          font-size: 16px;
+        }
+      }
+      
+      @media (max-width: 767px) {
+        .video-container {
+          max-width: 100%;
+        }
+        
+        .video-description {
+          font-size: 15px;
+          line-height: 1.5;
+        }
+      }
+      
+      .video-controls {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 3;
+        display: flex;
+        gap: 10px;
+      }
+      
+      .sound-toggle {
+        background-color: rgba(0, 0, 0, 0.6);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        padding: 0;
+      }
+      
+      .sound-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .sound-toggle svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      @media (max-width: 767px) {
+        .video-controls {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .sound-toggle {
+          width: 40px;
+          height: 40px;
+        }
       }
     </style>
     <script type="text/javascript">
@@ -842,18 +1103,32 @@
             </div>
           </div>
         </section>
-        <section class="hero-bottom-cta-marquee">
-          <div class="section-gap-bottom">
-            <div data-w-id="871753a3-dfda-acc9-2c31-0032b2291c56" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="hero-bottom-cta-marquee-block">
-              <div class="hero-bottom-cta-marquee-item">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/677635c760578004434ccc45_01%20%281%29-p-500.jpg 500w, images/677635c760578004434ccc45_01%20%281%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/677635c760578004434ccc45_01%20%281%29.jpg" loading="lazy" class="hero-bottom-cta-image">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29-p-500.jpg 500w, images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29.jpg" loading="lazy" class="hero-bottom-cta-image">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29-p-500.jpg 500w, images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29.jpg" loading="lazy" class="hero-bottom-cta-image">
+        <!-- Video Showcase Section -->
+        <section class="video-showcase-section">
+          <div class="video-showcase-wrapper">
+            <div data-w-id="video-container" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="video-container">
+              <video class="showcase-video" autoplay loop muted playsinline poster="images/munnarrr.jpg">
+                <source src="videos/MUNNAR-KERALA -4K ARIEL VIEW.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-controls">
+                <button class="sound-toggle" aria-label="Toggle sound">
+                  <svg class="sound-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16zm10.598-10.598a1 1 0 011.414 0 8 8 0 010 11.314 1 1 0 11-1.414-1.414 6 6 0 000-8.485 1 1 0 010-1.415zm-2.83 2.83a1 1 0 111.415 0 4 4 0 010 5.656 1 1 0 01-1.414-1.414 2 2 0 000-2.829 1 1 0 010-1.414z" fill="white"/>
+                  </svg>
+                  <svg class="sound-on-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16z" fill="white"/>
+                    <path d="M23 12l-3.536-3.536M23 12l-3.536 3.536M19.464 8.464L16 12M19.464 15.536L16 12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
               </div>
-              <div class="hero-bottom-cta-marquee-item">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/677635c760578004434ccc45_01%20%281%29-p-500.jpg 500w, images/677635c760578004434ccc45_01%20%281%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/677635c760578004434ccc45_01%20%281%29.jpg" loading="lazy" class="hero-bottom-cta-image">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29-p-500.jpg 500w, images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/6783a4f157c5ce7778cdad50_Cta%20Banner%20%282%29.jpg" loading="lazy" class="hero-bottom-cta-image">
-                <img sizes="(max-width: 479px) 200px, (max-width: 767px) 250px, (max-width: 991px) 300px, (max-width: 1279px) 400px, (max-width: 1439px) 450px, (max-width: 1919px) 550px, 620px" srcset="images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29-p-500.jpg 500w, images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29.jpg 620w" alt="Hero Bottom Cta Image" src="images/6783a4f19eec5d3a5061ebf6_Cta%20Banner%20%281%29.jpg" loading="lazy" class="hero-bottom-cta-image">
+              <div class="video-overlay">
+                <div class="play-button">
+                  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="white" fill-opacity="0.9"/>
+                    <path d="M16 12L10 16.5V7.5L16 12Z" fill="#009688"/>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -1000,6 +1275,22 @@
                   function recalculateSizes() {
                     slideWidth = slides[0].getBoundingClientRect().width;
                     slidesToShow = getSlidesToShow();
+                    
+                    // Force a reflow to ensure proper calculations
+                    slides.forEach(slide => {
+                      if (window.innerWidth > 767) {
+                        const width = window.innerWidth > 1200 ? 'calc(33.333% - 20px)' : 
+                                      window.innerWidth > 991 ? 'calc(33.333% - 17px)' : 'calc(50% - 10px)';
+                        slide.style.flex = `0 0 ${width}`;
+                      } else {
+                        slide.style.flex = '0 0 100%';
+                      }
+                    });
+                    
+                    // Re-measure after setting flex basis
+                    setTimeout(() => {
+                      slideWidth = slides[0].getBoundingClientRect().width;
+                    }, 10);
                   }
                   
                   // Create indicator dots
@@ -1078,7 +1369,7 @@
                     updateDots();
                     
                     // Calculate offset - ensure full visibility
-                    const gap = window.innerWidth <= 767 ? 0 : 20;
+                    const gap = window.innerWidth <= 767 ? 0 : window.innerWidth >= 1200 ? 30 : 20;
                     
                     // For mobile, ensure the card is fully centered in the viewport
                     if (window.innerWidth <= 767) {
@@ -1939,4 +2230,94 @@
     </svg>
   </a>
   <!-- WhatsApp Floating Button End -->
+      
+      <!-- Video Player Script -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const videoContainer = document.querySelector('.video-container');
+          const videoOverlay = document.querySelector('.video-overlay');
+          const video = document.querySelector('.showcase-video');
+          const soundToggle = document.querySelector('.sound-toggle');
+          const soundOnIcon = document.querySelector('.sound-on-icon');
+          const soundOffIcon = document.querySelector('.sound-off-icon');
+          
+          if (videoContainer && video) {
+            // Ensure video autoplays
+            video.muted = true;
+            
+            // Make sure icons match initial muted state
+            if (soundOnIcon && soundOffIcon) {
+              soundOnIcon.style.display = 'block';
+              soundOffIcon.style.display = 'none';
+            }
+            
+            // Play the video automatically
+            video.play().catch(error => {
+              console.log('Autoplay was prevented:', error);
+              // Show overlay if autoplay is prevented
+              if (videoOverlay) {
+                videoOverlay.style.opacity = '1';
+                videoOverlay.style.pointerEvents = 'auto';
+              }
+            });
+            
+                          // Handle sound toggle
+            if (soundToggle && soundOnIcon && soundOffIcon) {
+              soundToggle.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering video container click
+                
+                if (video.muted) {
+                  // Unmute
+                  video.muted = false;
+                  soundOnIcon.style.display = 'none';
+                  soundOffIcon.style.display = 'block';
+                } else {
+                  // Mute
+                  video.muted = true;
+                  soundOffIcon.style.display = 'none';
+                  soundOnIcon.style.display = 'block';
+                }
+              });
+            }
+            
+            // Handle click on video overlay
+            if (videoOverlay) {
+              videoOverlay.addEventListener('click', function() {
+                videoOverlay.style.opacity = '0';
+                videoOverlay.style.pointerEvents = 'none';
+                
+                // Play video if it's paused
+                if (video.paused) {
+                  video.play().catch(error => {
+                    console.log('Play was prevented:', error);
+                  });
+                }
+              });
+              
+              // Hide overlay after video starts playing
+              video.addEventListener('playing', function() {
+                videoOverlay.style.opacity = '0';
+                videoOverlay.style.pointerEvents = 'none';
+              });
+              
+              // Show overlay when video is paused
+              video.addEventListener('pause', function() {
+                if (!video.seeking) {
+                  videoOverlay.style.opacity = '1';
+                  videoOverlay.style.pointerEvents = 'auto';
+                }
+              });
+              
+              // Show overlay when video ends
+              video.addEventListener('ended', function() {
+                // If not looping
+                if (!video.loop) {
+                  videoOverlay.style.opacity = '1';
+                  videoOverlay.style.pointerEvents = 'auto';
+                }
+              });
+            }
+          }
+        });
+      </script>
 </html>
