@@ -5,7 +5,7 @@
 [forms]
   [forms.contact]
     name = "Contact Form"
-    success_url = "/contact/contact.html?success=true"
+    success_url = "/?form_submitted=true"
     
 [forms.contact.fields]
   name = { required = true }
