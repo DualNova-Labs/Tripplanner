@@ -445,7 +445,7 @@
                     <style>
                       /* Enhanced success message styling */
                       .w-form-done {
-                        display: flex !important;
+                        display: none; /* Default state is hidden */
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
@@ -460,6 +460,11 @@
                         border: 1px solid rgba(0, 150, 136, 0.2);
                         opacity: 0;
                         transform: translateY(20px);
+                      }
+                      
+                      /* Applied when success message should be shown */
+                      .w-form-done.show-success {
+                        display: flex;
                         animation: fadeInUp 0.8s ease forwards;
                       }
                       
