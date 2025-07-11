@@ -1113,10 +1113,10 @@
               </video>
               <div class="video-controls">
                 <button class="sound-toggle" aria-label="Toggle sound">
-                  <svg class="sound-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="sound-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
                     <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16zm10.598-10.598a1 1 0 011.414 0 8 8 0 010 11.314 1 1 0 11-1.414-1.414 6 6 0 000-8.485 1 1 0 010-1.415zm-2.83 2.83a1 1 0 111.415 0 4 4 0 010 5.656 1 1 0 01-1.414-1.414 2 2 0 000-2.829 1 1 0 010-1.414z" fill="white"/>
                   </svg>
-                  <svg class="sound-on-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                  <svg class="sound-on-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16z" fill="white"/>
                     <path d="M23 12l-3.536-3.536M23 12l-3.536 3.536M19.464 8.464L16 12M19.464 15.536L16 12" stroke="white" stroke-width="2" stroke-linecap="round"/>
                   </svg>
@@ -2245,6 +2245,12 @@
             // Ensure video autoplays
             video.muted = true;
             
+            // Make sure icons match initial muted state
+            if (soundOnIcon && soundOffIcon) {
+              soundOnIcon.style.display = 'block';
+              soundOffIcon.style.display = 'none';
+            }
+            
             // Play the video automatically
             video.play().catch(error => {
               console.log('Autoplay was prevented:', error);
@@ -2255,7 +2261,7 @@
               }
             });
             
-            // Handle sound toggle
+                          // Handle sound toggle
             if (soundToggle && soundOnIcon && soundOffIcon) {
               soundToggle.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent triggering video container click
@@ -2263,13 +2269,13 @@
                 if (video.muted) {
                   // Unmute
                   video.muted = false;
-                  soundOffIcon.style.display = 'none';
-                  soundOnIcon.style.display = 'block';
+                  soundOnIcon.style.display = 'none';
+                  soundOffIcon.style.display = 'block';
                 } else {
                   // Mute
                   video.muted = true;
-                  soundOnIcon.style.display = 'none';
-                  soundOffIcon.style.display = 'block';
+                  soundOffIcon.style.display = 'none';
+                  soundOnIcon.style.display = 'block';
                 }
               });
             }
