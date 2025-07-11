@@ -899,6 +899,50 @@
           line-height: 1.5;
         }
       }
+      
+      .video-controls {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 3;
+        display: flex;
+        gap: 10px;
+      }
+      
+      .sound-toggle {
+        background-color: rgba(0, 0, 0, 0.6);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        padding: 0;
+      }
+      
+      .sound-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .sound-toggle svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      @media (max-width: 767px) {
+        .video-controls {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .sound-toggle {
+          width: 40px;
+          height: 40px;
+        }
+      }
     </style>
     <script type="text/javascript">
       ! function(o, c) {
@@ -1063,10 +1107,21 @@
         <section class="video-showcase-section">
           <div class="video-showcase-wrapper">
             <div data-w-id="video-container" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="video-container">
-              <video class="showcase-video" controls poster="images/munnarrr.jpg">
+              <video class="showcase-video" autoplay loop muted playsinline poster="images/munnarrr.jpg">
                 <source src="videos/MUNNAR-KERALA -4K ARIEL VIEW.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
+              <div class="video-controls">
+                <button class="sound-toggle" aria-label="Toggle sound">
+                  <svg class="sound-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16zm10.598-10.598a1 1 0 011.414 0 8 8 0 010 11.314 1 1 0 11-1.414-1.414 6 6 0 000-8.485 1 1 0 010-1.415zm-2.83 2.83a1 1 0 111.415 0 4 4 0 010 5.656 1 1 0 01-1.414-1.414 2 2 0 000-2.829 1 1 0 010-1.414z" fill="white"/>
+                  </svg>
+                  <svg class="sound-on-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M5.889 16H2a1 1 0 01-1-1V9a1 1 0 011-1h3.889l5.294-4.332a.5.5 0 01.817.387v15.89a.5.5 0 01-.817.387L5.89 16z" fill="white"/>
+                    <path d="M23 12l-3.536-3.536M23 12l-3.536 3.536M19.464 8.464L16 12M19.464 15.536L16 12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
               <div class="video-overlay">
                 <div class="play-button">
                   <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2198,31 +2253,80 @@
           const videoContainer = document.querySelector('.video-container');
           const videoOverlay = document.querySelector('.video-overlay');
           const video = document.querySelector('.showcase-video');
+          const soundToggle = document.querySelector('.sound-toggle');
+          const soundOnIcon = document.querySelector('.sound-on-icon');
+          const soundOffIcon = document.querySelector('.sound-off-icon');
           
-          if (videoContainer && videoOverlay && video) {
-            // Hide controls initially
-            video.controls = false;
+          if (videoContainer && video) {
+            // Ensure video autoplays
+            video.muted = true;
             
-            videoContainer.addEventListener('click', function() {
-              videoOverlay.style.opacity = '0';
-              videoOverlay.style.pointerEvents = 'none';
-              video.play();
-              video.controls = true;
-            });
-            
-            // Reset overlay when video ends or is paused
-            video.addEventListener('pause', function() {
-              if (!video.seeking) {
+            // Play the video automatically
+            video.play().catch(error => {
+              console.log('Autoplay was prevented:', error);
+              // Show overlay if autoplay is prevented
+              if (videoOverlay) {
                 videoOverlay.style.opacity = '1';
                 videoOverlay.style.pointerEvents = 'auto';
               }
             });
             
-            video.addEventListener('ended', function() {
-              videoOverlay.style.opacity = '1';
-              videoOverlay.style.pointerEvents = 'auto';
-              video.currentTime = 0;
-            });
+            // Handle sound toggle
+            if (soundToggle && soundOnIcon && soundOffIcon) {
+              soundToggle.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering video container click
+                
+                if (video.muted) {
+                  // Unmute
+                  video.muted = false;
+                  soundOffIcon.style.display = 'none';
+                  soundOnIcon.style.display = 'block';
+                } else {
+                  // Mute
+                  video.muted = true;
+                  soundOnIcon.style.display = 'none';
+                  soundOffIcon.style.display = 'block';
+                }
+              });
+            }
+            
+            // Handle click on video overlay
+            if (videoOverlay) {
+              videoOverlay.addEventListener('click', function() {
+                videoOverlay.style.opacity = '0';
+                videoOverlay.style.pointerEvents = 'none';
+                
+                // Play video if it's paused
+                if (video.paused) {
+                  video.play().catch(error => {
+                    console.log('Play was prevented:', error);
+                  });
+                }
+              });
+              
+              // Hide overlay after video starts playing
+              video.addEventListener('playing', function() {
+                videoOverlay.style.opacity = '0';
+                videoOverlay.style.pointerEvents = 'none';
+              });
+              
+              // Show overlay when video is paused
+              video.addEventListener('pause', function() {
+                if (!video.seeking) {
+                  videoOverlay.style.opacity = '1';
+                  videoOverlay.style.pointerEvents = 'auto';
+                }
+              });
+              
+              // Show overlay when video ends
+              video.addEventListener('ended', function() {
+                // If not looping
+                if (!video.loop) {
+                  videoOverlay.style.opacity = '1';
+                  videoOverlay.style.pointerEvents = 'auto';
+                }
+              });
+            }
           }
         });
       </script>
