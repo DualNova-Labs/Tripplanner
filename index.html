@@ -586,10 +586,17 @@
         background-color: #ddd;
         cursor: pointer;
         transition: all 0.3s ease;
+        opacity: 0.6;
       }
       .carousel-dot.active {
         background-color: #009688;
         transform: scale(1.2);
+        opacity: 1;
+      }
+      
+      /* Ensure the active dot has the teal color matching the image */
+      .carousel-dot:nth-child(2) {
+        background-color: #009688;
       }
       
       /* IMPROVED DESKTOP STYLES */
@@ -1341,7 +1348,7 @@
                     for (let i = 0; i < numberOfDots; i++) {
                       const dot = document.createElement('div');
                       dot.classList.add('carousel-dot');
-                      if (i === 0) dot.classList.add('active');
+                      if (i === 1) dot.classList.add('active'); // Make second dot active by default
                       dot.addEventListener('click', () => {
                         moveToSlide(i);
                       });
@@ -1476,27 +1483,19 @@
                     return matrix.m41;
                   }
                   
-                  // Initialize
+                  // Initialize with the second slide (index 1) as default
                   recalculateSizes();
                   updateActiveStates();
-                  moveToSlide(0);
+                  moveToSlide(1); // Start with second slide (center dot active)
                   
                   // Add extra handling for images loading, which might affect layout
                   window.addEventListener('load', () => {
                     recalculateSizes();
-                    moveToSlide(slideIndex);
+                    moveToSlide(1); // Ensure second slide is active after full page load
                   });
                   
-                  // Add autoplay functionality
+                  // Remove autoplay functionality - only move on button clicks
                   let autoplayInterval = null;
-                  let autoplaySpeed = 5000; // 5 seconds between slides
-                  
-                  function startAutoplay() {
-                    if (autoplayInterval) clearInterval(autoplayInterval);
-                    autoplayInterval = setInterval(() => {
-                      moveToSlide(slideIndex + 1);
-                    }, autoplaySpeed);
-                  }
                   
                   function stopAutoplay() {
                     if (autoplayInterval) {
@@ -1505,15 +1504,8 @@
                     }
                   }
                   
-                  // Start autoplay
-                  startAutoplay();
-                  
-                  // Pause on hover/touch
-                  container.addEventListener('mouseenter', stopAutoplay);
-                  container.addEventListener('touchstart', stopAutoplay);
-                  
-                  // Resume on mouse leave
-                  container.addEventListener('mouseleave', startAutoplay);
+                  // Stop any existing autoplay
+                  stopAutoplay();
                 });
               </script>
             </div>
