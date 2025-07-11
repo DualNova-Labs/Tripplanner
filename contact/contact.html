@@ -257,6 +257,17 @@
         }
       }
     </style>
+    <style>
+      /* Hide spinner arrows in number input fields */
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
   </head>
   <body>
     <div class="main-wrapper">
@@ -417,7 +428,7 @@
                             <input type="hidden" name="_replyto" id="email-reply">
                         </div>
                         <div class="form-fields-row">
-                          <input class="form-field w-input" maxlength="256" name="phone" placeholder="Phone" type="tel" id="phone" required="">
+                          <input class="form-field w-input" maxlength="10" minlength="10" name="phone" placeholder="Phone" type="number" id="phone" required min="1000000000" max="9999999999" title="Please enter a 10-digit phone number">
                           <input class="form-field w-input" maxlength="256" name="location" placeholder="Location" type="text" id="location" required="">
                         </div>
                         <div class="form-fields-row single-field">
@@ -696,6 +707,33 @@ document.addEventListener('DOMContentLoaded', function() {
     formSuccess.classList.remove('show-success');
   }
 });
+</script>
+<script>
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('keydown', function(e) {
+    // Block e, +, -, .
+    if (["e", "E", "+", "-", "."].includes(e.key)) {
+      e.preventDefault();
+    }
+    // Block input if already 10 digits (allow navigation and backspace)
+    const allowedKeys = ["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"];
+    if (
+      this.value.length >= 10 &&
+      !allowedKeys.includes(e.key) &&
+      // Allow replacing selected text
+      !(this.selectionStart !== this.selectionEnd)
+    ) {
+      e.preventDefault();
+    }
+  });
+  // Prevent pasting more than 10 digits
+  phoneInput.addEventListener('input', function(e) {
+    if (this.value.length > 10) {
+      this.value = this.value.slice(0, 10);
+    }
+  });
+}
 </script>
       <!-- Mobile Sidebar and Overlay -->
       <div class="sidebar-overlay" id="sidebarOverlay"></div>
