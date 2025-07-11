@@ -401,7 +401,6 @@
                     <form id="contactForm" class="contact-form" action="https://formsubmit.co/abhiramak963@gmail.com" method="POST">
                       <!-- FormSubmit Configuration -->
                       <input type="hidden" name="_subject" value="New Contact Form Submission - Tripplanner">
-                      <input type="hidden" name="_captcha" value="false">
                       <input type="hidden" name="_template" value="table">
                       <input type="hidden" name="_next" value="https://tripplannernew.netlify.app/contact/contact.html?submission=success">
                       <!-- If your domain changes, update the URL above -->
@@ -414,7 +413,8 @@
                       <div class="form-fields-wrapper">
                         <div class="form-fields-row">
                           <input class="form-field w-input" maxlength="256" name="name" placeholder="Your Name" type="text" id="name" required="">
-                          <input class="form-field w-input" maxlength="256" name="email" placeholder="Your Email" type="email" id="email" required="">
+                                                      <input class="form-field w-input" maxlength="256" name="email" placeholder="Your Email" type="email" id="email" required="">
+                            <input type="hidden" name="_replyto" id="email-reply">
                         </div>
                         <div class="form-fields-row">
                           <input class="form-field w-input" maxlength="256" name="phone" placeholder="Phone" type="tel" id="phone" required="">
