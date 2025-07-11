@@ -398,34 +398,34 @@
               <div class="contact-from-wrapper">
                 <div class="w-layout-blockcontainer container-default contact-form-container w-container">
                   <div data-w-id="dfb82180-30bc-b7e4-fdd1-c32ac0b12eb9" style="-webkit-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 15px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="contact-form-block w-form">
-                    <form action="https://formsubmit.co/abinchempilayil20@gmail.com" method="POST">
+                    <form id="contactForm" class="contact-form">
                       <h3 class="contact-form-title">Fill the form below</h3>
                       <div class="form-fields-wrapper">
                         <div class="form-fields-row">
-                          <input class="form-field w-input" maxlength="256" name="Your-Name" data-name="Your Name" placeholder="Your Name" type="text" id="Your-Name" required="">
-                          <input class="form-field w-input" maxlength="256" name="Your-Email" data-name="Your Email" placeholder="Your Email" type="email" id="Your-Email" required="">
+                          <input class="form-field w-input" maxlength="256" name="name" data-name="Your Name" placeholder="Your Name" type="text" id="name" required="">
+                          <input class="form-field w-input" maxlength="256" name="email" data-name="Your Email" placeholder="Your Email" type="email" id="email" required="">
                         </div>
                         <div class="form-fields-row">
-                          <input class="form-field w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Phone" type="tel" id="Phone" required="">
-                          <input class="form-field w-input" maxlength="256" name="Location" data-name="Location" placeholder="Location" type="text" id="Location" required="">
+                          <input class="form-field w-input" maxlength="256" name="phone" data-name="Phone" placeholder="Phone" type="tel" id="phone" required="">
+                          <input class="form-field w-input" maxlength="256" name="location" data-name="Location" placeholder="Location" type="text" id="location" required="">
                         </div>
                         <div class="form-fields-row single-field">
-                          <textarea placeholder="Type your message" maxlength="5000" id="Your-Message" name="Your-Message" data-name="Your Message" class="form-field message-field w-node-fc5244b1-d148-5ede-2dc4-d8a561f2bfa3-901e9541 w-input"></textarea>
+                          <textarea placeholder="Type your message" maxlength="5000" id="message" name="message" data-name="Your Message" class="form-field message-field w-node-fc5244b1-d148-5ede-2dc4-d8a561f2bfa3-901e9541 w-input"></textarea>
                         </div>
                         <div class="form-accent-wrapper">
                           <label class="w-checkbox accent-checkbox-field">
                             <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox-icon"></div>
-                            <input type="checkbox" name="Checkbox" id="Checkbox" data-name="Checkbox" required="" style="opacity:0;position:absolute;z-index:-1">
-                            <span class="checkbox-label w-form-label" for="Checkbox">I agree to the privacy policy</span>
+                            <input type="checkbox" name="privacy" id="privacy" data-name="Privacy" required="" style="opacity:0;position:absolute;z-index:-1">
+                            <span class="checkbox-label w-form-label" for="privacy">I agree to the privacy policy</span>
                           </label>
                         </div>
                       </div>
-                      <input type="submit" data-wait="Please wait..." class="form-submit-button w-button" value="Submit">
+                      <button type="submit" class="form-submit-button w-button">Submit</button>
                     </form>
-                    <div class="w-form-done">
+                    <div id="formSuccess" class="w-form-done" style="display:none;">
                       <div>Thank you! Your submission has been received!</div>
                     </div>
-                    <div class="w-form-fail">
+                    <div id="formError" class="w-form-fail" style="display:none;">
                       <div>Oops! Something went wrong while submitting the form.</div>
                     </div>
                   </div>
@@ -713,6 +713,119 @@
         handleResize();
       </script>
   </body>
+  
+  <!-- Add Google Forms and WhatsApp API Integration -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Google Form URL - Using Netlify redirect to avoid CORS issues
+      const googleFormURL = '/submit-form';
+      
+      // WhatsApp business phone number - Your business WhatsApp number
+      const whatsappNumber = '917306364765';
+      
+      // Form field name mapping to Google Form field names
+      // These are the actual entry IDs from your Google Form
+      const googleFormFieldMapping = {
+        'name': 'entry.2005620554',    // Name field ID
+        'email': 'entry.1045781291',   // Email field ID
+        'phone': 'entry.1166974658',   // Phone number field ID
+        'location': 'entry.1065046570', // Address field ID
+        'message': 'entry.839337160'   // Comments field ID
+      };
+      
+      const contactForm = document.getElementById('contactForm');
+      const formSuccess = document.getElementById('formSuccess');
+      const formError = document.getElementById('formError');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const formDataObj = {};
+        formData.forEach((value, key) => {
+          formDataObj[key] = value;
+        });
+        
+        // Prepare data for Google Form
+        const googleFormData = new FormData();
+        for (const [formField, value] of Object.entries(formDataObj)) {
+          if (googleFormFieldMapping[formField]) {
+            googleFormData.append(googleFormFieldMapping[formField], value);
+          }
+        }
+        
+        // Prepare WhatsApp message
+        const whatsappMessage = `
+*New Contact Form Submission*
+---------------------------
+*Name:* ${formDataObj.name}
+*Email:* ${formDataObj.email}
+*Phone:* ${formDataObj.phone}
+*Location:* ${formDataObj.location}
+*Message:* ${formDataObj.message}
+---------------------------
+        `.trim();
+        
+        // Encode the WhatsApp message
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Submit to Google Form
+        fetch(googleFormURL, {
+          method: 'POST',
+          mode: 'no-cors', // This is important for CORS policy
+          body: googleFormData
+        })
+        .then(() => {
+          // Show success message
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+          
+          // Send to WhatsApp API
+          sendToWhatsApp(whatsappNumber, encodedMessage);
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          formError.style.display = 'block';
+        });
+      });
+      
+      function sendToWhatsApp(number, message) {
+        // Server-side approach using Netlify Function
+        fetch('/.netlify/functions/send-whatsapp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            number: number,
+            message: decodeURIComponent(message)
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('WhatsApp message prepared:', data);
+          
+          // If you want to automatically open WhatsApp in a new tab
+          // window.open(data.whatsapp_url, '_blank');
+        })
+        .catch(error => {
+          console.error('Error sending WhatsApp message:', error);
+          
+          // Fallback to direct WhatsApp API if server-side fails
+          const iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          iframe.src = `https://api.whatsapp.com/send?phone=${number}&text=${message}`;
+          document.body.appendChild(iframe);
+          
+          setTimeout(() => {
+            document.body.removeChild(iframe);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+
 <!-- WhatsApp Floating Button Start -->
 <a href="https://wa.me/919778096463" target="_blank" id="whatsapp-float" aria-label="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#25D366" class="bi bi-whatsapp" viewBox="0 0 16 16">
