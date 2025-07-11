@@ -425,6 +425,9 @@
         overflow: visible;
         padding: 20px 0;
         margin: 20px 0;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
       }
       
       .custom-carousel-track {
@@ -592,10 +595,11 @@
       /* IMPROVED DESKTOP STYLES */
       @media (min-width: 1200px) {
         .custom-carousel-container {
-          padding: 30px 60px;
-          margin: 30px 0;
+          padding: 30px 0;
+          margin: 30px auto;
           overflow: visible;
           position: relative;
+          max-width: 1200px;
         }
         
         .custom-carousel-track {
@@ -611,49 +615,47 @@
         }
         
         .carousel-nav {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0;
-          transform: translateY(-50%);
-          justify-content: space-between;
+          position: relative;
+          justify-content: center;
           padding: 0;
-          margin-top: 0;
-          pointer-events: none;
+          margin-top: 40px;
           width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 24px;
         }
         
         .carousel-button {
-          position: absolute;
+          position: relative;
           width: 56px;
           height: 56px;
           pointer-events: auto;
           z-index: 10;
           box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          transition: all 0.3s ease;
         }
         
-        .carousel-button:first-child {
-          left: -28px;
-        }
-        
-        .carousel-button:last-child {
-          right: -28px;
+        .carousel-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+          background: #f5f5f5;
         }
         
         .carousel-dots {
-          position: absolute;
-          bottom: -40px;
-          left: 0;
-          right: 0;
+          position: relative;
           justify-content: center;
+          display: flex;
+          gap: 10px;
         }
       }
       
       /* MEDIUM DESKTOP */
       @media (min-width: 992px) and (max-width: 1199px) {
         .custom-carousel-container {
-          padding: 20px 40px;
+          padding: 20px 0;
           overflow: visible;
+          margin: 30px auto;
+          max-width: 960px;
         }
         
         .custom-carousel-track {
@@ -661,51 +663,65 @@
         }
         
         .carousel-nav {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0;
-          transform: translateY(-50%);
-          justify-content: space-between;
+          position: relative;
+          justify-content: center;
           padding: 0;
-          margin-top: 0;
-          pointer-events: none;
+          margin-top: 40px;
           width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 20px;
         }
         
         .carousel-button {
-          position: absolute;
+          position: relative;
           pointer-events: auto;
           width: 50px;
           height: 50px;
           box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+          transition: all 0.3s ease;
         }
         
-        .carousel-button:first-child {
-          left: -25px;
-        }
-        
-        .carousel-button:last-child {
-          right: -25px;
+        .carousel-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+          background: #f5f5f5;
         }
         
         .carousel-dots {
-          position: absolute;
-          bottom: -40px;
-          left: 0;
-          right: 0;
+          position: relative;
           justify-content: center;
+          display: flex;
+          gap: 10px;
         }
       }
       
       @media (max-width: 991px) {
+        .custom-carousel-container {
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
         .custom-carousel-slide {
           flex: 0 0 calc(50% - 10px);
         }
         
         .carousel-nav {
           position: relative;
-          margin-top: 30px;
+          margin-top: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+        }
+        
+        .carousel-button {
+          transition: all 0.3s ease;
+        }
+        
+        .carousel-button:hover {
+          transform: translateY(-3px);
         }
       }
       @media (max-width: 767px) {
