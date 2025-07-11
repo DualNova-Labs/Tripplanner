@@ -597,7 +597,7 @@
       }
       
       /* Ensure the active dot has the teal color matching the image */
-      .carousel-dot:nth-child(2) {
+      .carousel-dot:nth-child(1) {
         background-color: #009688;
       }
       
@@ -1210,22 +1210,6 @@
               
               <div class="custom-carousel-container">
                 <div class="custom-carousel-track" id="carouselTrack">
-                  <!-- Cochin -->
-                  <div class="custom-carousel-slide">
-                    <div class="slide-image-container">
-                      <img src="images/kochi.jpg" class="slide-image" alt="Cochin City Tour">
-                    </div>
-                    <div class="slide-content">
-                      <h3 class="slide-title">Cochin City Tour – Cochin, Kerala</h3>
-                      <p class="slide-description">An iconic hotel and entertainment complex with a rooftop infinity pool, luxury shopping mall.</p>
-                      <div class="slide-footer">
-                        <a href="contact/contact.html" class="primary-button-wrapper w-inline-block">
-                          <p class="button-text">Book</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  
                   <!-- Athirappilly -->
                   <div class="custom-carousel-slide">
                     <div class="slide-image-container">
@@ -1354,7 +1338,7 @@
                     for (let i = 0; i < numberOfDots; i++) {
                       const dot = document.createElement('div');
                       dot.classList.add('carousel-dot');
-                      if (i === 1) dot.classList.add('active'); // Make second dot active by default
+                      if (i === 0) dot.classList.add('active'); // Make first dot active by default
                       dot.addEventListener('click', () => {
                         moveToSlide(i);
                       });
@@ -1493,15 +1477,15 @@
                     return matrix.m41;
                   }
                   
-                  // Initialize with the second slide (index 1) as default
+                  // Initialize with the first slide (index 0) as default
                   recalculateSizes();
                   updateActiveStates();
-                  moveToSlide(1); // Start with second slide (center dot active)
+                  moveToSlide(0); // Start with first slide
                   
                   // Add extra handling for images loading, which might affect layout
                   window.addEventListener('load', () => {
                     recalculateSizes();
-                    moveToSlide(1); // Ensure second slide is active after full page load
+                    moveToSlide(0); // Ensure first slide is active after full page load
                   });
                   
                   // Handle window resize to maintain proper positioning
