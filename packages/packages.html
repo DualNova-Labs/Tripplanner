@@ -401,6 +401,24 @@
                   .package-card-title:hover {
                     text-decoration: none;
                   }
+                  .all-packages-cards-item {
+                    transition: all 0.3s ease;
+                  }
+                  .all-packages-cards-item:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                  }
+                  .package-slide-content-wrapper {
+                    transition: all 0.3s ease;
+                    border-radius: 12px;
+                    overflow: hidden;
+                  }
+                  .all-packages-cards-item:hover .package-thumbnail-image {
+                    transform: scale(1.05);
+                  }
+                  .package-thumbnail-image {
+                    transition: transform 0.5s ease;
+                  }
                   @media (max-width: 767px) {
                     .packages-heading-container .page-hero-title {
                       font-size: 28px;
