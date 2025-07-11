@@ -2355,45 +2355,4 @@
           }
         });
       </script>
-      <script>
-        // Form submission success handler
-        document.addEventListener('DOMContentLoaded', function() {
-          // Check for form_submitted parameter in URL
-          const urlParams = new URLSearchParams(window.location.search);
-          if (urlParams.get('form_submitted') === 'true') {
-            // Create success message element
-            const successMessage = document.createElement('div');
-            successMessage.style.position = 'fixed';
-            successMessage.style.top = '20px';
-            successMessage.style.left = '50%';
-            successMessage.style.transform = 'translateX(-50%)';
-            successMessage.style.backgroundColor = '#4CAF50';
-            successMessage.style.color = 'white';
-            successMessage.style.padding = '16px 24px';
-            successMessage.style.borderRadius = '8px';
-            successMessage.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            successMessage.style.zIndex = '9999';
-            successMessage.style.textAlign = 'center';
-            successMessage.style.fontWeight = 'bold';
-            successMessage.innerText = 'Thank you! Your form has been submitted successfully.';
-            
-            // Add to document
-            document.body.appendChild(successMessage);
-            
-            // Remove after 5 seconds
-            setTimeout(function() {
-              successMessage.style.opacity = '0';
-              successMessage.style.transition = 'opacity 0.5s ease';
-              setTimeout(function() {
-                document.body.removeChild(successMessage);
-              }, 500);
-            }, 5000);
-            
-            // Remove the parameter from URL without refreshing
-            const url = new URL(window.location);
-            url.searchParams.delete('form_submitted');
-            window.history.replaceState({}, '', url);
-          }
-        });
-      </script>
 </html>
